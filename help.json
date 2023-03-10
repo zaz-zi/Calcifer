@@ -1,0 +1,43 @@
+{
+    "can_do": [
+        "Defining words and phrases/idioms: I can provide definitions for any word or phrase from either Russian or English using Wiktionary. My definition will always be in English, will include transcription, and may include examples of use.\n\nTo use this feature, type in \"/define [word or phrase]\" in a text channel.\n\nLooking up words from Uban Dictionary: if you feel rather slangy, I can also look up definitions from Urban Dictionary.\n\nTo use this feature, type in **\"/urban [word or phrase]\"** in a text channel.\n\nTranslation: I can translate any text from one language into another using DeepL Translator.\n\nTo use this feature, type in **\"/translate [target language code] [text to translate]\"** in a text channel. You can access the list of language codes supported by DeepL Translator using **\"/help_translate\".**\n\nCreating voice channels: I can create temporary voice channels for users where you can set the channel name and user limit and subsequently, edit those as you see fit. Additionally, I allow the user to ban/unban other users from the channel and lock/unlock the channel.\n\nTo create a temporary voice channel, you must first join the **\"Create room\"** voice channel, type in **\"/voice_create [user limit] [channel name]\"** in a text channel (preferably the text chat of the **\"Create room\"** voice channel). To change the user limit of your personal voice channel, type in **\"/voice_limit [new limit]\".** To rename your personal voice channel, type in **\"/voice_rename [new name]\".** To ban or unban a user from your personal voice channel, type in **\"/voice_ban [user]\"** or **\"/voice_unban [user]\"** respectively. To lock or unlock your personal voice channel, type in **\"/voice_lock\"** or **\"/voice_unlock\"** respectively.",
+        "Давать определения словам и фразам/фразеологизмам: я могу дать определение любому слову или фразе из русского или английского языков, используя Викисловарь. Определения даются исключительно на английском языке, содержат транскрипцию и, по возможности, примеры использования.\n\nЧтобы воспользоваться этой функцией, введите команду **\"/define [слово или фраза]\"** в любом текстовом канале.\n\nИскать слова из Urban Dictionary: если это что-то сленговое и/или противоречащее литературной норме английского языка, я также могу дать определение из Urban Dictionary.\n\nЧтобы воспользоваться этой функцией, введите команду **\"/urban [слово или фраза]\"** в любом текстовом канале.\n\nПереводить: я могу перевести любой текст с одного языка на другой через переводчик DeepL.\n\nЧтобы воспользоваться этой функцией, введите команду **\"/translate [код языка перевода] [Ваш текст]\"** в любом текстовом канале. Со списком кодов языков, поддерживающихся переводчиком DeepL, можно ознакомиться при помощи команды **\"/help_translate\".**\n\nСоздавать голосовые каналы: я могу создавать временные голосовые каналы, где можно настроить максимально допустимое количество пользователей, редактировать название канала, а также ограничить/разрешить доступ или заблокировать/разблокировать канал.\n\nДля создания голосового канала необходимо сначала зайти в голосовой канал **\"Create room\"**, затем ввести команду **\"/voice_create [максимальное количество пользователей] [название канала]\"** в любом текстовом канале (желательно во встроенном чате голосового канала **\"Create room\"**). Чтобы переименовать созданный канал, введите команду **\"/voice_rename [название канала]\".** Чтобы изменить максимальное количество пользователей созданного канала, введите команду **\"/voice_limit [количество пользователей]\"**. Чтобы ограничить/разрешить доступ конкретному пользователю к созданному каналу, введите команду **\"/voice_ban [имя пользователя]\"** или **\"/voice_unban [имя пользователя]\"** соответственно. Чтобы закрыть/открыть доступ к созданному каналу, введите команду **\"/voice_lock\"** или **\"/voice_unlock\"** соответственно."
+    ],
+    "help": "",
+    "help_translate": {
+        "description": "**Here is the list of all languages you can translate your text into using the \"/translate\" command:**",
+        "langs": {
+            "bg": "Bulgarian",
+            "cz": "Czech",
+            "da": "Danish",
+            "de": "German",
+            "el": "Greek",
+            "en-gb": "English (British)",
+            "en-us": "English (American)",
+            "es": "Spanish",
+            "et": "Estonian",
+            "fi": "Finnish",
+            "fr": "French",
+            "hu": "Hungarian",
+            "id": "Indonesian",
+            "it": "Italian",
+            "ja": "Japanese",
+            "ko": "Korean",
+            "lt": "Lithuanian",
+            "lv": "Latvian",
+            "nb": "Norwegian (Bokmal)",
+            "nl": "Dutch",
+            "pl": "Polish",
+            "pt-br": "Portuguese (Brazilian)",
+            "pt-pt": "Portuguese (Portugal)",
+            "ro": "Romanian",
+            "ru": "Russian",
+            "sk": "Slovak",
+            "sl": "Slovenian",
+            "sv": "Swedish",
+            "tr": "Turkish",
+            "uk": "Ukrainian",
+            "zh": "Chinese (simplified)"
+        }
+    }
+}
