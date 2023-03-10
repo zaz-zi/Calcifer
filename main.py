@@ -167,4 +167,3 @@ async def self(interaction: discord.Interaction):
 
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')
-
