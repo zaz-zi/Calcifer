@@ -56,7 +56,7 @@ def generateOutput(inputWord: str):
                 # usage example if exists
                 if len(li.xpath('.//*[@class = "h-usage-example"]')) > 0:
                     for usageI in range(len(li.xpath('.//*[@class = "h-usage-example"]'))):
-                        lis[j] = lis[j] + '\nㅤㅤ' + li.xpath('.//*[@class = "h-usage-example"]')[usageI].text_content()  # TODO: add a separator for the croner case мама
+                        lis[j] = lis[j] + '\nㅤ' + li.xpath('.//*[@class = "h-usage-example"]')[usageI].text_content()  # TODO: add a separator for the croner case мама
 
             # remove empty entries
             lis = list(filter(None, lis))
