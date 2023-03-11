@@ -42,11 +42,11 @@ def generateOutput(inputWord: str):
 
             speechPart = currentTag.xpath(f'./span[@class="mw-headline"]')[0].text
             if speechPart not in definitions:
-                output += speechPart + '\n\n'
+                output = f'{output}{speechPart}\n\n'
 
             if currentTag.xpath('following-sibling::*[1]')[0].tag == 'p':  # class="Latn headword", lang="en"
                 underSpeechPart = currentTag.xpath('following-sibling::*[1]')[0].text_content()
-                output += underSpeechPart + '\n'
+                output = f'{output}{underSpeechPart}\n'
 
             lis = currentTag.xpath('./following-sibling::ol[1]/li')
 
@@ -54,17 +54,18 @@ def generateOutput(inputWord: str):
             for j, li in enumerate(lis):
                 lis[j] = li.text_content().split('\n')[0].strip()
                 # usage example if exists
-                if len(li.xpath('.//*[@class = "h-usage-example"]')) > 0:
-                    for usageI in range(len(li.xpath('.//*[@class = "h-usage-example"]'))):
-                        lis[j] = lis[j] + '\nㅤ' + li.xpath('.//*[@class = "h-usage-example"]')[usageI].text_content()  # TODO: add a separator for the croner case мама
+                if len(li.xpath('./dl/dd')) > 0:
+                    for usage in li.xpath('./dl/dd'):
+                        if usage.text_content().split()[0] not in ['Synonym:', 'Synonyms:']:
+                            lis[j] = lis[j] + '\n' + usage.text_content()
 
             # remove empty entries
             lis = list(filter(None, lis))
 
             for j, li in enumerate(lis):
                 if j < 5:
-                    output = f'{output}{j + 1}) {li}\n'
-            output += '\n'
+                    output = f'{output}{j + 1}) {li}\n\n'
+            output = f'{output}\n'
 
     if output.replace('\n', '') == inputWord:
         output = 'Word or phrase not found'
