@@ -57,7 +57,7 @@ async def on_member_join(member):
     roles = client.get_channel(1079081151706173654)
     introductions = client.get_channel(1079080326132936815)
     await member.add_roles(unverified)
-    await channel.send(f"Hello {member.mention} and welcome to PYRE!\nPlease take a moment to read our {rules.mention} and choose your {roles.mention} to get verified and gain full access to the server. You might also want to {introductions.mention}. If you have any questions, feel free to contact our moderator team. \nEnjoy your stay!")
+    await channel.send(f"Hello {member.mention} and welcome to PYRE!\nPlease take a moment to read our {rules.mention} and choose your {roles.mention} to get verified and gain full access to the server. If you have any questions, feel free to contact our moderator team. ")
 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
