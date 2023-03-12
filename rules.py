@@ -17,13 +17,13 @@ async def rule(interaction: discord.Interaction, rule_number: str, lang: str):
         if lang == 'ru':
             output = rulesRus[rule_number]
             embed = discord.Embed(
-                type='rich', description=f"{rule_number}. {output}", color=0xffa400)
+                type='rich', description=f"**{rule_number}.** {output}", color=0xffa400)
             embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
         if lang == 'en':
             output = rulesEng[rule_number]
             embed = discord.Embed(
-                type='rich', description=f"{rule_number}. {output}", color=0xffa400)
+                type='rich', description=f"**{rule_number}.** {output}", color=0xffa400)
             embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
 
