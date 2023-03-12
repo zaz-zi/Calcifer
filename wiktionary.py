@@ -3,7 +3,7 @@ import requests
 import string
 import discord
 
-def generateOutput(inputWord: str):
+def generateOutput(inputWord: str, speechPart):
 
     output = ''
 
@@ -71,7 +71,7 @@ def generateOutput(inputWord: str):
 
 
 
-async def wiktionary(interaction: discord.Interaction, inpWord: str):
+async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part: str = 'all'):
     output = generateOutput(inpWord)
     finalString = ''
     for i in output:
