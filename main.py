@@ -110,7 +110,7 @@ async def self(interaction: discord.Interaction):
     await voice.unlock(interaction)
 
 
-@client.tree.command(name='voice_limit', description='Change user limit of your custom voice channel')
+@client.tree.command(name='voice_limit', description='Change the user limit of your custom voice channel')
 async def self(interaction: discord.Interaction, new_limit: int):
     await voice.limit(interaction, new_limit)
 
