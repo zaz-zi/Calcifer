@@ -340,6 +340,8 @@ async def menuLangs(interaction: discord.Interaction):
         rundown = jsonRoles['description']
     embedRundown = discord.Embed(
         type="rich", description=rundown, color=0xffa400)
+    embedRundown.set_author(
+            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
     await interaction.channel.send(embed=embedRundown)
     await interaction.response.send_message('.', ephemeral=True)
     embedEn = discord.Embed(
