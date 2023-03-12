@@ -65,5 +65,7 @@ async def rules(interaction: discord.Interaction):
 #        embedIntro = discord.Embed(type="rich", description=rulesIntro['introRus'], color=0xffa400)
         embedRules = discord.Embed(
             type="rich", description=finalString, color=0xffa400)
+        embedRules.set_author(
+            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
 #        await interaction.channel.send(embed=embedIntro)
         await interaction.channel.send(embed=embedRules)
