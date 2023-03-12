@@ -116,8 +116,8 @@ async def self(interaction: discord.Interaction, new_limit: int):
 
 
 @client.tree.command(name='define', description='Define a word or phrase')
-async def self(interaction: discord.Interaction, word: str, speech_part: str = 'all'):
-    await wiktionary.wiktionary(interaction, word, speech_part)
+async def self(interaction: discord.Interaction, word: str, part_of_speech: str = 'all'):
+    await wiktionary.wiktionary(interaction, word, part_of_speech)
 
 
 @client.tree.command(name='urban', description='Look up a word on Urban Dictionary')
