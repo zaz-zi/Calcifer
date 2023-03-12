@@ -3,16 +3,20 @@ import requests
 import string
 import discord
 
-def generateOutput(inputWord: str, speechPart):
+def generateOutput(inputWord: str, speechPart: str):
 
     output = ''
+    speechPart = speechPart.capitalize()
 
-    speechParts = [
-        'Article', 'Determiner', 'Numeral', 'Noun', 'Pronoun', 'Verb', 'Adjective',
-        'Adverb', 'Preposition', 'Postposition', 'Circumposition', 'Ambiposition',
-        'Conjunction', 'Interjection', 'Exclamation', 'Particle', 'Clause', 'Proper noun',
-        'Participle', 'Phrase'
-        ]
+    if speechPart == 'All':
+        speechParts = [
+            'Article', 'Determiner', 'Numeral', 'Noun', 'Pronoun', 'Verb', 'Adjective',
+            'Adverb', 'Preposition', 'Postposition', 'Circumposition', 'Ambiposition',
+            'Conjunction', 'Interjection', 'Exclamation', 'Particle', 'Clause', 'Proper noun',
+            'Participle', 'Phrase'
+            ]
+    else:
+        speechParts = [speechPart]  # break after speechPart is found increases performance
 
     if inputWord[0] in string.ascii_letters:
         language = 'English'
@@ -72,7 +76,7 @@ def generateOutput(inputWord: str, speechPart):
 
 
 async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part: str = 'all'):
-    output = generateOutput(inpWord)
+    output = generateOutput(inpWord, speech_part)
     finalString = ''
     for i in output:
         if i != inpWord:
