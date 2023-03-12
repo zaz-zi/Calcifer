@@ -3,12 +3,6 @@ import requests
 import string
 import discord
 
-
-from lxml import html
-import requests
-import string
-
-
 def generateOutput(inputWord: str):
 
     output = ''
@@ -50,16 +44,18 @@ def generateOutput(inputWord: str):
             # extract the text from the tag and all its children
             for j, li in enumerate(lis):
                 lis[j] = li.text_content().split('\n')[0].strip()
+
                 # usage example if exists
                 if len(li.xpath('./dl/dd')) > 0:
-                    for usageRaw in li.xpath('./dl/dd'):
+                    for usageRaw in li.xpath('./dl/dd'):  # alternative: li.xpath('.//div[@class="h-usage-example"]')
                         if usageRaw.text_content().split()[0] not in ['Synonym:', 'Synonyms:', 'Antonym:', 'Antonyms:']:
                             usage = usageRaw.text_content()
-                            # if re.search(r'\.[^\s\d]\w*', usage):
-                            #     usage = re.sub(r'\.[^\s\d]\w*', '. ― ', usage)
-                            # if usage.count('―') > 2:
-                            #     usage = usage[:-2]  # potential bugs
                             lis[j] = lis[j] + '\n' + f'*{usage}*'
+
+                elif len(li.xpath('./ol/li/dl/dd')) > 0:
+                    if li.xpath('./ol/li/dl/dd')[0].text_content().split()[0] not in ['Synonym:', 'Synonyms:', 'Antonym:', 'Antonyms:']:
+                        usage = li.xpath('./ol/li/dl/dd')[0].text_content()
+                        lis[j] = lis[j] + '\n' + f'*{usage}*'
 
             # remove empty entries
             lis = list(filter(None, lis))
