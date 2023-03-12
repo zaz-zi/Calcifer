@@ -17,12 +17,14 @@ async def rule(interaction: discord.Interaction, rule_number: str, lang: str):
         if lang == 'ru':
             output = rulesRus[rule_number]
             embed = discord.Embed(
-                type='rich', description=f"{rule_number}. {output}", color=0xffa400)
+                type='rich', description=f"**{rule_number}.** {output}", color=0xffa400)
+            embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
         if lang == 'en':
             output = rulesEng[rule_number]
             embed = discord.Embed(
-                type='rich', description=f"{rule_number}. {output}", color=0xffa400)
+                type='rich', description=f"**{rule_number}.** {output}", color=0xffa400)
+            embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
 
 
@@ -44,24 +46,26 @@ async def rules(interaction: discord.Interaction):
             url='attachment://rules.png')
         await interaction.channel.send(file=file, embed=embedPicture)
 
-        finalString = ''
+        finalString = f'{rulesIntro["introEng"]}\n\n'
         for key, item in rulesEng.items():
-            finalString += f"{key}. {item}\n\n"
-        embedIntro = discord.Embed(
-            type="rich", description=rulesIntro['introEng'], color=0xffa400)
+            finalString += f"**{key}.** {item}\n\n"
+#        embedIntro = discord.Embed(type="rich", description=rulesIntro['introEng'], color=0xffa400)
         embedRules = discord.Embed(
             type="rich", description=finalString, color=0xffa400)
-        await interaction.channel.send(embed=embedIntro)
+        embedRules.set_author(
+            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
+#        await interaction.channel.send(embed=embedIntro)
         await interaction.channel.send(embed=embedRules)
 
-        await asyncio.sleep(600)
+#        await asyncio.sleep(600)
 
-        finalString = ''
+        finalString = f'{rulesIntro["introRus"]}\n\n'
         for key, item in rulesRus.items():
-            finalString += f"{key}. {item}\n\n"
-        embedIntro = discord.Embed(
-            type="rich", description=rulesIntro['introRus'], color=0xffa400)
+            finalString += f"**{key}.** {item}\n\n"
+#        embedIntro = discord.Embed(type="rich", description=rulesIntro['introRus'], color=0xffa400)
         embedRules = discord.Embed(
             type="rich", description=finalString, color=0xffa400)
-        await interaction.channel.send(embed=embedIntro)
+        embedRules.set_author(
+            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
+#        await interaction.channel.send(embed=embedIntro)
         await interaction.channel.send(embed=embedRules)
