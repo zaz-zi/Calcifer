@@ -166,5 +166,10 @@ async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
 
+@client.tree.command(name='help', description='Get info on available commands')
+async def self(interaction: discord.Interaction):
+    await help.help(interaction)
+    
+
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')
