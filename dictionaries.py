@@ -36,6 +36,8 @@ async def urban(interaction: discord.Interaction, word: str):
     finalString += f'\n\n\n\n**Definition:**\n {definition}\n'
     finalString += f'\n**Example:** \n{example}'
     urlWord = word.replace(' ', '+')
+    file = discord.File('urbandict_icon.png', filename="urbandict_icon.png")
     embed = discord.Embed(
         type="rich", title=f'{word}', url=f'https://www.urbandictionary.com/define.php?term={urlWord}', description=finalString, color=0xffa400)
-    await interaction.response.send_message(embed=embed)
+    embed.set_author(name='Urban Dictionary', icon_url='attachment://urbandict_icon.png')
+    await interaction.response.send_message(file=file, embed=embed)
