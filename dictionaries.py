@@ -35,7 +35,7 @@ async def urban(interaction: discord.Interaction, word: str):
         example = jsonresp[0]['example'].replace('[', '').replace(']', '')
         finalString = ''
         finalString += f'\n\n\n\n**Definition:**\n {definition}\n'
-        finalString += f'\n**Example:** \n{example}'
+        finalString += f'\n**Usage example:** \n{example}'
         urlWord = word.replace(' ', '+')
         file = discord.File('urbandict_icon.png', filename="urbandict_icon.png")
         embed = discord.Embed(
