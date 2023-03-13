@@ -43,7 +43,8 @@ async def on_voice_state_update(member, before, after):
     if after.channel != None:
         if after.channel.id == 1081588020995698708:  # id канала который нужно мониторить
             botCommands = client.get_channel(1081588020995698708)
-            await botCommands.send(f'{member.mention} type in "/voice_create [user limit] [channel name]" to create a temporary channel')
+            botInfo = client.get_channel(1081670787699855412)
+            await botCommands.send(f'{member.mention} type in "/voice_create [user limit] [channel name]" to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
 
 
 @client.event
@@ -164,6 +165,11 @@ async def self(interaction: discord.Interaction, user: discord.User, reason: str
 async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
+
+@client.tree.command(name='help', description='Get info on available commands')
+async def self(interaction: discord.Interaction):
+    await help.help(interaction)
+    
 
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')

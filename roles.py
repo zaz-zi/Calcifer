@@ -328,20 +328,30 @@ async def menuLangs(interaction: discord.Interaction):
     with io.open('roles.json', encoding='utf-8') as file:
         jsonRoles = json.load(file)
         rolesHe = jsonRoles['he']
-        rundown = jsonRoles['description']
-    embedRundown = discord.Embed(
-        type="rich", description=rundown, color=0xffa400)
-    embedRundown.set_author(
+        rundownEn = jsonRoles['description_en']
+        rundownRu = jsonRoles['description_ru']
+    embedRundownEn = discord.Embed(
+        type="rich", description=rundownEn, color=0xffa400)
+    embedRundownEn.set_author(
             name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
-    await interaction.channel.send(embed=embedRundown)
+    embedRundownRu = discord.Embed(
+        type="rich", description=rundownRu, color=0xffa400)
+    embedRundownRu.set_author(
+            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
+    await interaction.channel.send(embed=embedRundownEn)
+    await interaction.channel.send(embed=embedRundownRu)
     await interaction.response.send_message('.', ephemeral=True)
+    fileEn = discord.File('en_circle_icon.png', filename="en_circle_icon.png")
+    fileRu = discord.File('ru_circle_icon.png', filename="ru_circle_icon.png")
     embedEn = discord.Embed(
         type="rich", title='**Please choose the English language proficiency role that best fits your current ability level\n\nВыберите роль, соответствующую Вашему уровню владения английским языком**', color=0xffa400)
-    await interaction.channel.send(embed=embedEn, view=EnglishMenu())
-
+    embedEn.set_author(name='English proficiency', icon_url=interaction.guild.icon.url)
+    embedEn.set_author(name='English proficiency', icon_url='attachment://en_circle_icon.png')
+    await interaction.channel.send(file=fileEn, embed=embedEn, view=EnglishMenu())
     embedRu = discord.Embed(
         type="rich", title='**Please choose the Russian language proficiency role that best fits your current ability level\n\nВыберите роль, соответствующую Вашему уровню владения русским языком**', color=0xffa400)
-    await interaction.channel.send(embed=embedRu, view=RussianMenu())
+    embedRu.set_author(name='Russian proficiency', icon_url='attachment://ru_circle_icon.png')
+    await interaction.channel.send(file=fileRu, embed=embedRu, view=RussianMenu())
     embedHe = discord.Embed(
         type="rich", description=rolesHe, color=0xffa400)
     await interaction.channel.send(embed=embedHe, view=HeritageMenu())

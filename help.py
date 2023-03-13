@@ -19,3 +19,8 @@ async def can_do(interaction: discord.Interaction):
         await interaction.response.send_message('.', ephemeral=True)
         await interaction.channel.send(embed=embedEn)
         await interaction.channel.send(embed=embedRu)
+
+
+async def help(interaction: discord.Interaction):
+    botInfo = interaction.guild.get_channel(1081670787699855412)
+    await interaction.response.send_message(f'For the full list of available commands, please refer to {botInfo.mention}')
