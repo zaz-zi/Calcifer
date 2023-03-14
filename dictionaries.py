@@ -34,17 +34,17 @@ async def urban(interaction: discord.Interaction, word: str):
         definition = jsonresp[0]['definition'].replace('[', '').replace(']', '')
         example = jsonresp[0]['example'].replace('[', '').replace(']', '')
         finalString = ''
-        finalString += f'\n\n\n\n**Definition:**\n {definition}\n'
+        finalString += f'\n\n\n\n**Definition:**\n{definition}\n'
         finalString += f'\n**Usage example:** \n{example}'
         urlWord = word.replace(' ', '+')
         file = discord.File('urbandict_icon.png', filename="urbandict_icon.png")
         embed = discord.Embed(
-            type="rich", title=f'{word}', url=f'https://www.urbandictionary.com/define.php?term={urlWord}', description=finalString, color=0xffa400)
+            type="rich", title=f'{word}', url=f'https://www.urbandictionary.com/define.php?term={urlWord}', description=finalString, color=0x134fe6)
         embed.set_author(name='Urban Dictionary', icon_url='attachment://urbandict_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
     except:
         file = discord.File('urbandict_icon.png', filename="urbandict_icon.png")        
         embed = discord.Embed(
-            type="rich", title='Error', description='Couldn\'t access the website. Please make sure you have provided an existing word or phrase.', color=0xffa400)
+            type="rich", title='Error', description='Couldn\'t access the website. Please make sure you have provided an existing word or phrase.', color=0x134fe6)
         embed.set_author(name='Urban Dictionary', icon_url='attachment://urbandict_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
