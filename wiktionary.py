@@ -119,12 +119,12 @@ async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part
     urlStr = inpWord.replace(' ', '_')
     if output != 'Word or phrase not found' and output != 'The word does not fit into the specified part of speech':
         file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
-        embed = discord.Embed(type='rich', title=f'{inpWord}', url=f'https://en.wiktionary.org/wiki/{urlStr}', description=output, color=0xffa400)
+        embed = discord.Embed(type='rich', title=f'{inpWord}', url=f'https://en.wiktionary.org/wiki/{urlStr}', description=output, color=0xeed6ae)
         embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
     else:
         file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
-        embed = discord.Embed(type='rich', title='Error', description=output, color=0xffa400)
+        embed = discord.Embed(type='rich', title='Error', description=output, color=0xeed6ae)
         embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
     
