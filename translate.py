@@ -13,7 +13,7 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
             phraseLettersOnly = re.sub("[^а-яА-Я]+", "", phrase)
             allRussian = True
             for letter in phraseLettersOnly:
-                if letter not in RUSSIAN_ALPHABET:
+                if letter.lower() not in RUSSIAN_ALPHABET:
                     allRussian = False
                     break
             if allRussian == False:
