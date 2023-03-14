@@ -8,6 +8,7 @@ RUSSIAN_ALPHABET = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 
 translator = deepl.Translator("e92f1b3d-8489-6817-b45d-d2ea86226a43:fx")
 
 async def translate(interaction: discord.Interaction, target_lang: str, phrase: str, source_lang: str = 'auto'):
+    file = discord.File('deepl_icon.png', filename="deepl_icon.png")
     try:
         if source_lang == 'auto':
             phraseLettersOnly = re.sub("[^а-яА-Я]+", "", phrase)
@@ -25,11 +26,13 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
         with io.open('help.json', encoding='utf-8') as file:
             jsonHelp = json.load(file)
             langs = jsonHelp['help_translate']['langs']
-        embed = discord.Embed(type="rich", title=phrase, description=f'**Translated to {langs[target_lang]}:**\n\n{result}', color=0xffa400)
-        await interaction.response.send_message(embed=embed)
+        embed = discord.Embed(type="rich", description=f'**Translated from {langs[result[1]]}:\n**{phrase}\n\nTranslated to {langs[target_lang]}:\n**{result}**', color=0x19264c)
+        embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
+        await interaction.response.send_message(file=file, embed=embed)
     except:
-        embed = discord.Embed(type="rich", title='Error', description='Something went wrong. Please make sure you have provided the correct language code. You can use the /help_translate command to view the full list of available language codes.', color=0xffa400)
-        await interaction.response.send_message(embed=embed)
+        embed = discord.Embed(type="rich", title='Error', description='Something went wrong. Please make sure you have provided the correct language code. You can use the /help_translate command to view the full list of available language codes.', color=0x19264c)
+        embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
+        await interaction.response.send_message(file=file, embed=embed)
 
 async def help_translate(interaction: discord.Interaction):
     with io.open('help.json', encoding='utf-8') as file:
