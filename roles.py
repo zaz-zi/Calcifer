@@ -330,6 +330,10 @@ async def menuLangs(interaction: discord.Interaction):
         rolesHe = jsonRoles['he_preamble'] + jsonRoles['he']
         rundownEn = jsonRoles['description_en']
         rundownRu = jsonRoles['description_ru']
+    file = discord.File('roles.png', filename="roles.png")
+    embedPicture = discord.Embed(type='rich', color=0xffa400)
+    embedPicture.set_image(url='attachment://roles.png')
+    await interaction.channel.send(file=file, embed=embedPicture)
     embedRundownEn = discord.Embed(
         type="rich", description=rundownEn, color=0xffa400)
     embedRundownEn.set_author(
