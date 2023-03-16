@@ -33,5 +33,7 @@ async def help_translate(interaction: discord.Interaction):
     finalString = f'{description}\n\n'
     for i, item in enumerate(langs):
         finalString += f'{i+1}) {item}: {langs[item]}\n'
-    embed = discord.Embed(type="rich", description=finalString, color=0xffa400)
-    await interaction.response.send_message(embed=embed, ephemeral=True)
+    embed = discord.Embed(type="rich", description=finalString, color=0x19264c)
+    embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
+    file = discord.File('deepl_icon.png', filename="deepl_icon.png")
+    await interaction.response.send_message(file=file, embed=embed, ephemeral=True)
