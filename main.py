@@ -132,7 +132,7 @@ async def self(interaction: discord.Interaction):
 
 
 @client.tree.command(name='mute', description='Mute a member. Moderator only.', guild=discord.Object(id=1079023618450792498))
-async def self(interaction: discord.Interaction, member: discord.Member, duration: int, time_unit: str = 's', reason: str = 'blank'):
+async def self(interaction: discord.Interaction, member: discord.Member, duration: int, time_unit: str = 'm', reason: str = 'blank'):
     await admin.mute(interaction, member, duration, time_unit, reason)
 
 

@@ -16,7 +16,7 @@ async def can_do(interaction: discord.Interaction):
         embedRu = discord.Embed(type='rich', title='Что я умею:', description=ruText, color=0xffa400)
         embedEn.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
         embedRu.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
-        await interaction.response.send_message('.', ephemeral=True)
+        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=10)
         await interaction.channel.send(embed=embedEn)
         await interaction.channel.send(embed=embedRu)
 

@@ -38,15 +38,17 @@ class EnglishMenu(discord.ui.View):
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
                             await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Intermediate', style=discord.ButtonStyle.red, custom_id='en2')
     async def selfEnIntermediate(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -79,15 +81,17 @@ class EnglishMenu(discord.ui.View):
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
                             await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Advanced', style=discord.ButtonStyle.red, custom_id='en3')
     async def selfEnAdvanced(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -120,15 +124,17 @@ class EnglishMenu(discord.ui.View):
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
                             await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Native Speaker', style=discord.ButtonStyle.red, custom_id='en4')
     async def selfEnNative(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -161,15 +167,17 @@ class EnglishMenu(discord.ui.View):
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
                             await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
 
 class RussianMenu(discord.ui.View):
@@ -207,15 +215,17 @@ class RussianMenu(discord.ui.View):
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
                             await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Intermediate', style=discord.ButtonStyle.red, custom_id='ru2')
     async def selfRuIntermediate(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -248,15 +258,17 @@ class RussianMenu(discord.ui.View):
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
                             await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Advanced', style=discord.ButtonStyle.red, custom_id='ru3')
     async def selfRuAdvanced(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -288,16 +300,16 @@ class RussianMenu(discord.ui.View):
                 for item in enRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
-                            await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            await interaction.user.remove_roles(unverified)                     
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Native Speaker', style=discord.ButtonStyle.red, custom_id='ru4')
     async def selfRuNative(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -329,16 +341,17 @@ class RussianMenu(discord.ui.View):
                 for item in enRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
                         if unverified in interaction.user.roles:
-                            await interaction.user.remove_roles(unverified)
-                            introductions = interaction.guild.get_channel(1079080326132936815)
-                            general = interaction.guild.get_channel(1079023618983464986)
-                            languageQuestions = interaction.guild.get_channel(1079073206570328115)
+                            await interaction.user.remove_roles(unverified) 
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
                     await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60*2)
+                    introductions = interaction.guild.get_channel(1079080326132936815)
+                    general = interaction.guild.get_channel(1079023618983464986)
+                    languageQuestions = interaction.guild.get_channel(
+                        1085206971436777604)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
 
 class HeritageMenu(discord.ui.View):
@@ -361,37 +374,43 @@ class HeritageMenu(discord.ui.View):
 
 
 async def menuLangs(interaction: discord.Interaction):
-    with io.open('roles.json', encoding='utf-8') as file:
-        jsonRoles = json.load(file)
-        rolesHe = jsonRoles['he_preamble'] + jsonRoles['he']
-        rundownEn = jsonRoles['description_en']
-        rundownRu = jsonRoles['description_ru']
-    file = discord.File('roles.png', filename="roles.png")
-    embedPicture = discord.Embed(type='rich', color=0xffa400)
-    embedPicture.set_image(url='attachment://roles.png')
-    await interaction.channel.send(file=file, embed=embedPicture)
-    embedRundownEn = discord.Embed(
-        type="rich", description=rundownEn, color=0xffa400)
-    embedRundownEn.set_author(
-            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
-    embedRundownRu = discord.Embed(
-        type="rich", description=rundownRu, color=0xffa400)
-    embedRundownRu.set_author(
-            name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
-    await interaction.channel.send(embed=embedRundownEn)
-    await interaction.channel.send(embed=embedRundownRu)
-    await interaction.response.send_message('.', ephemeral=True)
-    fileEn = discord.File('en_circle_icon.png', filename="en_circle_icon.png")
-    fileRu = discord.File('ru_circle_icon.png', filename="ru_circle_icon.png")
-    embedEn = discord.Embed(
-        type="rich", title='**Please choose the English language proficiency role that best fits your current ability level\n\nВыберите роль, соответствующую Вашему уровню владения английским языком**', color=0xffa400)
-    embedEn.set_author(name='English proficiency', icon_url=interaction.guild.icon.url)
-    embedEn.set_author(name='English proficiency', icon_url='attachment://en_circle_icon.png')
-    await interaction.channel.send(file=fileEn, embed=embedEn, view=EnglishMenu())
-    embedRu = discord.Embed(
-        type="rich", title='**Please choose the Russian language proficiency role that best fits your current ability level\n\nВыберите роль, соответствующую Вашему уровню владения русским языком**', color=0xffa400)
-    embedRu.set_author(name='Russian proficiency', icon_url='attachment://ru_circle_icon.png')
-    await interaction.channel.send(file=fileRu, embed=embedRu, view=RussianMenu())
-    embedHe = discord.Embed(
-        type="rich", description=rolesHe, color=0xffa400)
-    await interaction.channel.send(embed=embedHe, view=HeritageMenu())
+    role = discord.utils.find(
+        lambda r: r.name == 'Moderator', interaction.guild.roles)
+    if role not in interaction.user.roles:
+        await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True)
+    else:
+
+        with io.open('roles.json', encoding='utf-8') as file:
+            jsonRoles = json.load(file)
+            rolesHe = jsonRoles['he_preamble'] + jsonRoles['he']
+            rundownEn = jsonRoles['description_en']
+            rundownRu = jsonRoles['description_ru']
+        file = discord.File('roles.png', filename="roles.png")
+        embedPicture = discord.Embed(type='rich', color=0xffa400)
+        embedPicture.set_image(url='attachment://roles.png')
+        await interaction.channel.send(file=file, embed=embedPicture)
+        embedRundownEn = discord.Embed(
+            type="rich", description=rundownEn, color=0xffa400)
+        embedRundownEn.set_author(
+                name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
+        embedRundownRu = discord.Embed(
+            type="rich", description=rundownRu, color=0xffa400)
+        embedRundownRu.set_author(
+                name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
+        await interaction.channel.send(embed=embedRundownEn)
+        await interaction.channel.send(embed=embedRundownRu)
+        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=10)
+        fileEn = discord.File('en_circle_icon.png', filename="en_circle_icon.png")
+        fileRu = discord.File('ru_circle_icon.png', filename="ru_circle_icon.png")
+        embedEn = discord.Embed(
+            type="rich", title='**Please choose the English language proficiency role that best fits your current ability level\n\nВыберите роль, соответствующую Вашему уровню владения английским языком**', color=0xffa400)
+        embedEn.set_author(name='English proficiency', icon_url=interaction.guild.icon.url)
+        embedEn.set_author(name='English proficiency', icon_url='attachment://en_circle_icon.png')
+        await interaction.channel.send(file=fileEn, embed=embedEn, view=EnglishMenu())
+        embedRu = discord.Embed(
+            type="rich", title='**Please choose the Russian language proficiency role that best fits your current ability level\n\nВыберите роль, соответствующую Вашему уровню владения русским языком**', color=0xffa400)
+        embedRu.set_author(name='Russian proficiency', icon_url='attachment://ru_circle_icon.png')
+        await interaction.channel.send(file=fileRu, embed=embedRu, view=RussianMenu())
+        embedHe = discord.Embed(
+            type="rich", description=rolesHe, color=0xffa400)
+        await interaction.channel.send(embed=embedHe, view=HeritageMenu())

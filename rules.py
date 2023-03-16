@@ -47,7 +47,7 @@ async def rules(interaction: discord.Interaction):
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True)
     else:
-        await interaction.response.send_message('Please stand by', ephemeral=True)
+        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=10)
         file = discord.File('rules.png', filename="rules.png")
         embedPicture = discord.Embed(type='rich', color=0xffa400)
         embedPicture.set_image(
