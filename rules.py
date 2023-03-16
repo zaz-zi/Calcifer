@@ -15,13 +15,21 @@ async def rule(interaction: discord.Interaction, rule_number: str, lang: str):
         await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True)
     else:
         if lang == 'ru':
-            output = rulesRus[rule_number]
+            otherLanguages = interaction.guild.get_channel(1079108472731357206)
+            languageQuestions = interaction.guild.get_channel(
+                1085206971436777604)
+            output = rulesRus[rule_number].replace(
+                "other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
             embed = discord.Embed(
                 type='rich', description=f"**{rule_number}.** {output}", color=0xffa400)
             embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
         if lang == 'en':
-            output = rulesEng[rule_number]
+            otherLanguages = interaction.guild.get_channel(1079108472731357206)
+            languageQuestions = interaction.guild.get_channel(
+                1085206971436777604)
+            output = rulesEng[rule_number].replace(
+                "other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
             embed = discord.Embed(
                 type='rich', description=f"**{rule_number}.** {output}", color=0xffa400)
             embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
@@ -39,7 +47,7 @@ async def rules(interaction: discord.Interaction):
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True)
     else:
-        await interaction.response.send_message('.', ephemeral=True)
+        await interaction.response.send_message('Please stand by', ephemeral=True)
         file = discord.File('rules.png', filename="rules.png")
         embedPicture = discord.Embed(type='rich', color=0xffa400)
         embedPicture.set_image(
@@ -48,7 +56,10 @@ async def rules(interaction: discord.Interaction):
 
         finalString = f'{rulesIntro["introEng"]}\n\n'
         for key, item in rulesEng.items():
-            finalString += f"**{key}.** {item}\n\n"
+            otherLanguages = interaction.guild.get_channel(1079108472731357206)
+            languageQuestions = interaction.guild.get_channel(1085206971436777604)
+            mentioned = item.replace("other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
+            finalString += f"**{key}.** {mentioned}\n\n"
 #        embedIntro = discord.Embed(type="rich", description=rulesIntro['introEng'], color=0xffa400)
         embedRules = discord.Embed(
             type="rich", description=finalString, color=0xffa400)
@@ -61,7 +72,10 @@ async def rules(interaction: discord.Interaction):
 
         finalString = f'{rulesIntro["introRus"]}\n\n'
         for key, item in rulesRus.items():
-            finalString += f"**{key}.** {item}\n\n"
+            otherLanguages = interaction.guild.get_channel(1079108472731357206)
+            languageQuestions = interaction.guild.get_channel(1085206971436777604)
+            mentioned = item.replace("other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
+            finalString += f"**{key}.** {mentioned}\n\n"
 #        embedIntro = discord.Embed(type="rich", description=rulesIntro['introRus'], color=0xffa400)
         embedRules = discord.Embed(
             type="rich", description=finalString, color=0xffa400)

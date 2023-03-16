@@ -1,27 +1,27 @@
 [
     {
-        "1": "Не нарушайте правила пользовательского соглашения Discord.",
-        "2": "Будьте уважительны к остальным: не используйте уничижительные или оскорбительные выражения, а также избегайте личных конфронтаций и затяжных споров.",
-        "3": "Не рассылайте спам и не занимайтесь саморекламой: это относится к акциям, ссылкам на другие серверы Discord, а также к саморекламе каналов в социальных сетях, веб-сайтов или товаров/услуг.",
-        "4": "Не нарушайте конфиденциальность других пользователей: не делитесь личной информацией других пользователей без их разрешения. Это включает в себя имена, адреса, номера телефонов и любые другие личные данные.",
-        "5": "Если Вы заметили нарушение правил сервера со стороны другого пользователя, не вступайте с ним в конфликт на этой почве — незамедлительно сообщите модерации.",
-        "6": "Любые языки кроме русского и английского запрещены во всех каналах помимо #other-languages.",
-        "7": "NSFW-контент запрещён.",
-        "8": "Не давайте ложных переводов или определений; это может запутать или ввести в заблуждение изучающих. Неоднократное нарушение этого правила, со злым умыслом или без, может повлечь за собой ограничение на отправление сообщений в #language-questions.",
-        "9": "Не обсуждайте темы, не относящиеся к тематике канала.",
-        "10": "Избегайте обсуждения тем, провоцирующих конфликты. Например, политики или религии."
+        "1": "Соблюдайте [условия использования](https://discord.com/terms) и следуйте [руководству для публичных серверов Discord](https://discord.com/guidelines).",
+        "2": "БуЕсли Вы заметили нарушение правил сервера со стороны другого пользователя, не вступайте с ним в конфликт на этой почве — незамедлительно сообщите модерации.",
+        "3": "Не используйте уничижительные или оскорбительные выражения, а также избегайте личных конфронтаций и затяжных споров.",
+        "4": "Не делитесь личной информацией других пользователей без их разрешения. Это включает в себя имена, адреса, номера телефонов и любые другие личные данные.",
+        "5": "Не рассылайте спам и не занимайтесь саморекламой: это относится к акциям, ссылкам на другие серверы Discord, а также к саморекламе каналов в социальных сетях, веб-сайтов и товаров/услуг. По вопросам размещения рекламы и сотрудничества обращайтесь к владельцу сервера.",
+        "6": "Любые языки кроме русского и английского запрещены во всех каналах помимо other-languages.",
+        "7": "Не обсуждайте темы, не относящиеся к тематике канала.",
+        "8": "Не давайте ложных переводов или определений; это может запутать или ввести в заблуждение изучающих. Неоднократное нарушение этого правила, со злым умыслом или без, может повлечь за собой ограничение на отправление сообщений в language-questions.",
+        "9": "Избегайте обсуждения тем, провоцирующих конфликты. Например, политики или религии.",
+        "10": "Контент 18+ запрещён."
     },
     {
-        "1": "Follow Discord's Terms of Service: all members must follow Discord's rules and guidelines at all times. Any violation of these rules may result in a warning or ban from the server.",
-        "2": "Be respectful: treat everyone with respect and kindness. Do not use derogatory or offensive language, and avoid engaging in personal attacks or bullying.",
-        "3": "No spamming or self-promotion: do not send irrelevant, excessive, or promotional messages, emojis, or links without prior permission from the server moderators. This includes advertisements, links to other Discord servers, and self-promotion of social media channels, websites, or products/services.",
-        "4": "Respect privacy: do not share personal information about other members without their permission. This includes real names, addresses, phone numbers, or any other sensitive information.",
-        "5": "Report inappropriate behavior: if you witness any inappropriate behavior on the server, report it to the moderators immediately. Do not engage in arguments or confrontations with other members.",
-        "6": "You can only speak Russian and English in all channels except for #other-languages.",
-        "7": "No NSFW content is allowed.",
-        "8": "Refrain from providing inaccurate translations or definitions, whether intentional or not; this may confuse or mislead students. Repeated violation of this rule may result in a restriction on sending messages in #language-questions.",
-        "9": "Keep your conversations relevant to the topic of the respectful channel.",
-        "10": "Avoid discussing controversial topics, such as politics and religion."
+        "1": "All members must follow [Discord's Terms of Service](https://discord.com/terms) and [Discord Community Guidelines](https://discord.com/guidelines) at all times.",
+        "2": "If you witness any inappropriate behavior on the server, do not engage in heated arguments or confrontations with the violator(s); report it to the moderator team instead.",
+        "3": "Refrain from using derogatory or offensive language, and avoid engaging in personal attacks or bullying.",
+        "4": "Respect the privacy of other members and avoid sharing their personal information without their explicit permission. This includes real names, addresses, phone numbers, or any other sensitive information.",
+        "5": "Obtain prior permission from the server owner before sending promotional messages or links. This includes advertisements, links to other Discord servers, and self-promotion of social media channels, websites, or products/services.",
+        "6": "You can only speak Russian and English in all channels except for other-languages.",
+        "7": "Keep your conversations relevant to the topic of the respectful channel.",
+        "8": "Refrain from providing inaccurate translations or definitions, whether intentional or not; this may confuse or mislead students. Repeated violation of this rule may result in a restriction on sending messages in language-questions.",
+        "9": "Avoid discussing controversial topics, such as politics or religion.",
+        "10": "No NSFW content is allowed."
     },
     {
         "introRus": "**Для поддержания порядка на нашем сервере существует набор правил, обязательных для исполнения всеми участниками. Любое нарушение правил может привести к предупреждению, ограничению на отправление сообщений и/или бану. Просим отметить, что при принятии тех или иных решений модерация оставляет за собой право трактовать настоящие правила вольно, опираясь на их содержание, а не формулировку.**",
