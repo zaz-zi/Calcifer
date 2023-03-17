@@ -41,7 +41,7 @@ async def on_ready():
 @client.event
 async def on_voice_state_update(member, before, after):
     if after.channel != None:
-        if after.channel.id == 1081588020995698708:  # id канала который нужно мониторить
+        if after.channel.id == 1081588020995698708:
             botCommands = client.get_channel(1081588020995698708)
             botInfo = client.get_channel(1081670787699855412)
             await botCommands.send(f'{member.mention} type in "/voice_create [user limit] [channel name]" to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
@@ -54,9 +54,8 @@ async def on_member_join(member):
         unverifiedID = jsonRoles['unverified']
     unverified = client.get_guild(1079023618450792498).get_role(unverifiedID)
     channel = client.get_channel(1079080374992392292)
-    rules = client.get_channel(1079080406328021124)
+    rules = client.get_channel(1085996380633448488)
     roles = client.get_channel(1079081151706173654)
-    introductions = client.get_channel(1079080326132936815)
     await member.add_roles(unverified)
     await channel.send(f"Hello {member.mention} and welcome to PYRE!\nPlease take a moment to read our {rules.mention} and choose your {roles.mention} to get verified and gain full access to the server. If you have any questions, feel free to contact our moderator team. ")
 
