@@ -15,9 +15,10 @@ async def rule(interaction: discord.Interaction, rule_number: str, lang: str):
         await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True)
     else:
         if lang == 'ru':
-            otherLanguages = interaction.guild.get_channel(1079108472731357206)
-            languageQuestions = interaction.guild.get_channel(
-                1085206971436777604)
+            with io.open('channel_ids.json', encoding='utf-8') as file:
+                channels = json.load(file)
+                otherLanguages = interaction.guild.get_channel(channels['other-languages'])
+                languageQuestions = interaction.guild.get_channel(channels['language-questions'])
             output = rulesRus[rule_number].replace(
                 "other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
             embed = discord.Embed(
@@ -25,9 +26,10 @@ async def rule(interaction: discord.Interaction, rule_number: str, lang: str):
             embed.set_footer(text='Practice Your Russian & English', icon_url=interaction.guild.icon.url)
             await interaction.response.send_message(embed=embed)
         if lang == 'en':
-            otherLanguages = interaction.guild.get_channel(1079108472731357206)
-            languageQuestions = interaction.guild.get_channel(
-                1085206971436777604)
+            with io.open('channel_ids.json', encoding='utf-8') as file:
+                channels = json.load(file)
+                otherLanguages = interaction.guild.get_channel(channels['other-languages'])
+                languageQuestions = interaction.guild.get_channel(channels['language-questions'])
             output = rulesEng[rule_number].replace(
                 "other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
             embed = discord.Embed(
@@ -56,8 +58,10 @@ async def rules(interaction: discord.Interaction):
 
         finalString = f'{rulesIntro["introEng"]}\n\n'
         for key, item in rulesEng.items():
-            otherLanguages = interaction.guild.get_channel(1079108472731357206)
-            languageQuestions = interaction.guild.get_channel(1085206971436777604)
+            with io.open('channel_ids.json', encoding='utf-8') as file:
+                channels = json.load(file)
+                otherLanguages = interaction.guild.get_channel(channels['other-languages'])
+                languageQuestions = interaction.guild.get_channel(channels['language-questions'])
             mentioned = item.replace("other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
             finalString += f"**{key}.** {mentioned}\n\n"
 #        embedIntro = discord.Embed(type="rich", description=rulesIntro['introEng'], color=0xffa400)
@@ -72,8 +76,10 @@ async def rules(interaction: discord.Interaction):
 
         finalString = f'{rulesIntro["introRus"]}\n\n'
         for key, item in rulesRus.items():
-            otherLanguages = interaction.guild.get_channel(1079108472731357206)
-            languageQuestions = interaction.guild.get_channel(1085206971436777604)
+            with io.open('channel_ids.json', encoding='utf-8') as file:
+                channels = json.load(file)
+                otherLanguages = interaction.guild.get_channel(channels['other-languages'])
+                languageQuestions = interaction.guild.get_channel(channels['language-questions'])
             mentioned = item.replace("other-languages", f"{otherLanguages.mention}").replace("language-questions", f"{languageQuestions.mention}")
             finalString += f"**{key}.** {mentioned}\n\n"
 #        embedIntro = discord.Embed(type="rich", description=rulesIntro['introRus'], color=0xffa400)

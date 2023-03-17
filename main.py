@@ -42,8 +42,10 @@ async def on_ready():
 async def on_voice_state_update(member, before, after):
     if after.channel != None:
         if after.channel.id == 1081588020995698708:
-            botCommands = client.get_channel(1081588020995698708)
-            botInfo = client.get_channel(1081670787699855412)
+            with io.open('channel_ids.json', encoding='utf-8') as file:
+                channels = json.load(file)
+                botInfo = client.get_channel(channels['bot-info'])
+                botCommands = client.get_channel(channels['bot-commands'])
             await botCommands.send(f'{member.mention} type in "/voice_create [user limit] [channel name]" to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
 
 
@@ -53,9 +55,11 @@ async def on_member_join(member):
         jsonRoles = json.load(file)
         unverifiedID = jsonRoles['unverified']
     unverified = client.get_guild(1079023618450792498).get_role(unverifiedID)
-    channel = client.get_channel(1079080374992392292)
-    rules = client.get_channel(1085996380633448488)
-    roles = client.get_channel(1079081151706173654)
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        channel = client.get_channel(channels['welcome'])
+        rules = client.get_channel(channels['rules'])
+        roles = client.get_channel(channels['roles'])
     await member.add_roles(unverified)
     await channel.send(f"Hello {member.mention} and welcome to PYRE!\nPlease take a moment to read our {rules.mention} and choose your {roles.mention} to get verified and gain full access to the server. If you have any questions, feel free to contact our moderator team. ")
 
@@ -160,12 +164,12 @@ async def self(interaction: discord.Interaction, user: discord.User, reason: str
     await admin.kick(interaction, user, reason)
 
 
-@client.tree.command(name='can_do', description='Moderator only')
+@client.tree.command(name='can_do', description='Moderator only', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
 
-@client.tree.command(name='help', description='Get info on available commands')
+@client.tree.command(name='help', description='Get info on available commands', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.help(interaction)
     
