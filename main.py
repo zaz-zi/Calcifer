@@ -11,6 +11,7 @@ import admin
 from datetime import datetime
 import wiktionary
 import help
+import asyncio
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -63,6 +64,63 @@ async def on_member_join(member):
     await member.add_roles(unverified)
     await channel.send(f"Hello {member.mention} and welcome to PYRE!\nPlease take a moment to read our {rules.mention} and choose your {roles.mention} to get verified and gain full access to the server. If you have any questions, feel free to contact our moderator team. ")
 
+waitingToSend = False
+
+@client.event
+async def on_message(message):
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        proofreading = client.get_channel(channels['proofreading'])
+    with io.open('proofreading_banned_links.json', encoding='utf-8') as file:
+        links = json.load(file)
+        global waitingToSend
+    
+    if message.channel == proofreading:
+        if message.author.id != 1081285777562013817:
+            text = message.content
+            linkFilter = False
+            for link in links:
+                if link in text:
+                    linkFilter = True
+            if text != "" and linkFilter == False:
+                if len(text) <= 2000:
+                    newMessage = await proofreading.send(f'Submission by {message.author.mention}')
+                    thread = await newMessage.create_thread(name=f"Submission by @{message.author.name}")
+                    await thread.send(text)
+                    await message.delete()
+                    with open("pinnedmessage.txt", "r+") as f:
+                        try:
+                            new_f = f.readlines()
+                            f.seek(0)
+                            for line in new_f:
+                                pinnedMessage = await proofreading.fetch_message(line.replace('\n', ''))
+                                await pinnedMessage.delete()
+                                if str(pinnedMessage.id) not in line:
+                                    f.write(line)
+                            if waitingToSend == False:
+                                waitingToSend = True
+                                await asyncio.sleep(10)
+                                embed = discord.Embed(
+                                    type='rich', description='Before posting, please refer to our [guide for proper channel usage and text submission instructions](https://discord.com/channels/1079023618450792498/1079074702213005373/1086403510339371039)')
+                                newPin = await proofreading.send(embed=embed)
+                                f.write(str(newPin.id))
+                                waitingToSend = False
+                            f.truncate()
+                        except:
+                            if waitingToSend == False:
+                                waitingToSend = True
+                                await asyncio.sleep(60*10)
+                                newPin = await proofreading.send('aboba')
+                                f.write(str(newPin.id))
+                                waitingToSend = False
+                            f.truncate()
+                else:
+                    await proofreading.send(f'{message.author.mention} your text exceeds the 2000 characters limit. For longer texts, please provide a link to any text editing website of your choice (preferably Google Docs).', delete_after=20)
+                    await message.delete()
+            else:
+                await proofreading.send(f'{message.author.mention} you cannot post any content other than text (such as pictures, GIFs, or files) in this channel.', delete_after=20)
+                await message.delete()
+                
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, target_lang: str, phrase: str, source_lang: str = 'auto'):
@@ -120,13 +178,13 @@ async def self(interaction: discord.Interaction, new_limit: int):
 
 
 @client.tree.command(name='define', description='Define a word or phrase')
-async def self(interaction: discord.Interaction, word: str, part_of_speech: str = 'all'):
-    await wiktionary.wiktionary(interaction, word, part_of_speech)
+async def self(interaction: discord.Interaction, input: str, part_of_speech: str = 'all'):
+    await wiktionary.wiktionary(interaction, input, part_of_speech)
 
 
 @client.tree.command(name='urban', description='Look up a word on Urban Dictionary')
-async def self(interaction: discord.Interaction, word: str):
-    await dictionaries.urban(interaction, word)
+async def self(interaction: discord.Interaction, input: str):
+    await dictionaries.urban(interaction, input)
 
 
 @client.tree.command(name='roles', description='Display role selecting menus. Moderator only.', guild=discord.Object(id=1079023618450792498))
@@ -144,7 +202,7 @@ async def self(interaction: discord.Interaction, member: discord.Member):
     await admin.unmute(interaction, member)
 
 
-@client.tree.command(name='mute_check', description='Moderator only', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='mute_check', description='Refreshes Calcifer\'s mute memory. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await admin.mute_check(interaction)
 
@@ -164,7 +222,7 @@ async def self(interaction: discord.Interaction, user: discord.User, reason: str
     await admin.kick(interaction, user, reason)
 
 
-@client.tree.command(name='can_do', description='Moderator only', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='can_do', description='Display the full list of Calcifer\'s available commands. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
