@@ -97,24 +97,22 @@ async def on_message(message):
                             break
                     newPin_webhook = discord.Webhook.from_url(f'https://discord.com/api/webhooks/{webhook_id}/{webhook_token}', client=client)
                     await newPin_webhook.send(content='Before posting, please check [our quick guide](https://discord.com/channels/1079023618450792498/1079074702213005373/1086403510339371039) on proper channel usage and text submission instructions.')
-                    # with open("pinnedmessage.txt", "r+") as f:
-                    #     new_f = f.readlines()
-                    #     f.seek(0)
-                    #     for line in new_f:
-                    #         pinnedMessage = await proofreading.fetch_message(line.replace('\n', ''))
-                    #         await pinnedMessage.delete()
-                    #         if str(pinnedMessage.id) not in line:
-                    #             f.write(line)
-                    #     # embed = discord.Embed(type='rich', description='Before posting, please refer to our [guide for proper channel usage and text submission instructions](https://discord.com/channels/1079023618450792498/1079074702213005373/1086403510339371039)')
-                    #     # newPin = await proofreading.send(embed=embed)
-                    #     f.write(str(message.channel.last_message_id))
-                    #     f.truncate()
                 else:
                     await proofreading.send(f'{message.author.mention} your message exceeds the 2,000 characters limit. Please refer to the pinned message of this channel for our quick guide on how to properly submit longer texts using Google Docs.', delete_after=20)
                     await message.delete()
             else:
                 await proofreading.send(f'{message.author.mention} you cannot post any content other than text (such as pictures, GIFs, or files) in this channel.', delete_after=20)
                 await message.delete()
+
+
+@client.event
+async def on_message_delete(message):
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        modLog = client.get_channel(channels['mod-log'])
+    # role = discord.utils.find(lambda r: r.name == 'Moderator', message.guild.roles)
+    # if role not in message.author.roles:
+    await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
                 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
@@ -227,7 +225,7 @@ async def self(interaction: discord.Interaction):
     await help.help(interaction)
 
 
-@client.tree.command(name='clear', description='Get info on Calcifer\'s available commands', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='remove', description='Remove up to 100 recent messages', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
     
