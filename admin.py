@@ -136,3 +136,18 @@ async def kick(interaction: discord.Interaction, member: discord.Member, reason:
             await interaction.response.send_message('The user has been kicked', ephemeral=True, delete_after=10) 
         except:
             await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
+
+
+async def clear(interaction: discord.Interaction, amount: int):
+    role = discord.utils.find(
+        lambda r: r.name == 'Moderator', interaction.guild.roles)
+    if role not in interaction.user.roles:
+        await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
+    else:
+        if amount <= 100:
+            channel = interaction.channel
+            await interaction.response.send_message('Please stand by', ephemeral=True)
+            await channel.purge(limit=amount)
+            await channel.send(f'{amount} messages deleted.', delete_after=20)
+        else:
+            await interaction.response.send_message('You cannot delete more than 100 messages', ephemeral=True)

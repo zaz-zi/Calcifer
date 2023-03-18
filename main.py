@@ -213,6 +213,11 @@ async def self(interaction: discord.Interaction):
 @client.tree.command(name='help', description='Get info on Calcifer\'s available commands', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.help(interaction)
+
+
+@client.tree.command(name='clear', description='Get info on Calcifer\'s available commands', guild=discord.Object(id=1079023618450792498))
+async def self(interaction: discord.Interaction, amount: int):
+    await admin.clear(interaction, amount)
     
 
 client.run(
