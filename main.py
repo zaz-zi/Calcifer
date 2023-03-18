@@ -110,12 +110,12 @@ async def self(interaction: discord.Interaction, target_lang: str, input: str, s
     await translate.translate(interaction, target_lang, input, source_lang)
 
 
-@client.tree.command(name='rules', description='Display server rules. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='rules', description='Post server rules. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await rules.rules(interaction)
 
 
-@client.tree.command(name='rule', description='Display a specific rule. Please specify the rule number and language (ru/en). Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='rule', description='Post a specific rule. Please specify the rule number and language (ru/en). Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, rule_number: str, lang: str):
     await rules.rule(interaction, rule_number=rule_number, lang=lang)
 
@@ -170,7 +170,7 @@ async def self(interaction: discord.Interaction, input: str):
     await dictionaries.urban(interaction, input)
 
 
-@client.tree.command(name='roles', description='Display role selecting menus. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='roles', description='Post role selecting menus. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await roles.menuLangs(interaction)
 
@@ -205,7 +205,7 @@ async def self(interaction: discord.Interaction, user: discord.User, reason: str
     await admin.kick(interaction, user, reason)
 
 
-@client.tree.command(name='can_do', description='Display the full list of Calcifer\'s available commands. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='can_do', description='Post the full list of Calcifer\'s available commands. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
