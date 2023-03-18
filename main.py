@@ -120,7 +120,7 @@ async def self(interaction: discord.Interaction, target_lang: str, input: str, s
     await translate.translate(interaction, target_lang, input, source_lang)
 
 
-@client.tree.command(name='rules', description='Post server rules. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='rules', description='Post the server rules. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await rules.rules(interaction)
 
