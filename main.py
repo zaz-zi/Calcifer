@@ -210,7 +210,7 @@ async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
 
-@client.tree.command(name='help', description='Get info on available commands', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='help', description='Get info on Calcifer\'s available commands', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.help(interaction)
     
