@@ -115,7 +115,7 @@ async def on_message(message):
                                 waitingToSend = False
                             f.truncate()
                 else:
-                    await proofreading.send(f'{message.author.mention} your text exceeds the 2000 characters limit. For longer texts, please provide a link to any text editing website of your choice (preferably Google Docs).', delete_after=20)
+                    await proofreading.send(f'{message.author.mention} your message exceeds the 2,000 characters limit. Please refer to the pinned message of this channel for our quick guide on how to properly submit longer texts using Google Docs.', delete_after=20)
                     await message.delete()
             else:
                 await proofreading.send(f'{message.author.mention} you cannot post any content other than text (such as pictures, GIFs, or files) in this channel.', delete_after=20)
