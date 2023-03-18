@@ -106,8 +106,8 @@ async def on_message(message):
                 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
-async def self(interaction: discord.Interaction, target_lang: str, phrase: str, source_lang: str = 'auto'):
-    await translate.translate(interaction, target_lang, phrase, source_lang)
+async def self(interaction: discord.Interaction, target_lang: str, input: str, source_lang: str = 'auto'):
+    await translate.translate(interaction, target_lang, input, source_lang)
 
 
 @client.tree.command(name='rules', description='Display server rules. Moderator only.', guild=discord.Object(id=1079023618450792498))
