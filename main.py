@@ -64,7 +64,6 @@ async def on_member_join(member):
     await member.add_roles(unverified)
     await channel.send(f"Hello {member.mention} and welcome to PYRE!\nPlease take a moment to read our {rules.mention} and choose your {roles.mention} to get verified and gain full access to the server. If you have any questions, feel free to contact our moderator team. ")
 
-waitingToSend = False
 
 @client.event
 async def on_message(message):
@@ -89,31 +88,17 @@ async def on_message(message):
                     await thread.send(text)
                     await message.delete()
                     with open("pinnedmessage.txt", "r+") as f:
-                        try:
-                            new_f = f.readlines()
-                            f.seek(0)
-                            for line in new_f:
-                                pinnedMessage = await proofreading.fetch_message(line.replace('\n', ''))
-                                await pinnedMessage.delete()
-                                if str(pinnedMessage.id) not in line:
-                                    f.write(line)
-                            if waitingToSend == False:
-                                waitingToSend = True
-                                await asyncio.sleep(10)
-                                embed = discord.Embed(
-                                    type='rich', description='Before posting, please refer to our [guide for proper channel usage and text submission instructions](https://discord.com/channels/1079023618450792498/1079074702213005373/1086403510339371039)')
-                                newPin = await proofreading.send(embed=embed)
-                                f.write(str(newPin.id))
-                                waitingToSend = False
-                            f.truncate()
-                        except:
-                            if waitingToSend == False:
-                                waitingToSend = True
-                                await asyncio.sleep(60*10)
-                                newPin = await proofreading.send('aboba')
-                                f.write(str(newPin.id))
-                                waitingToSend = False
-                            f.truncate()
+                        new_f = f.readlines()
+                        f.seek(0)
+                        for line in new_f:
+                            pinnedMessage = await proofreading.fetch_message(line.replace('\n', ''))
+                            await pinnedMessage.delete()
+                            if str(pinnedMessage.id) not in line:
+                                f.write(line)
+                        embed = discord.Embed(type='rich', description='Before posting, please refer to our [guide for proper channel usage and text submission instructions](https://discord.com/channels/1079023618450792498/1079074702213005373/1086403510339371039)')
+                        newPin = await proofreading.send(embed=embed)
+                        f.write(str(newPin.id))
+                        f.truncate()
                 else:
                     await proofreading.send(f'{message.author.mention} your message exceeds the 2,000 characters limit. Please refer to the pinned message of this channel for our quick guide on how to properly submit longer texts using Google Docs.', delete_after=20)
                     await message.delete()
