@@ -155,14 +155,16 @@ class WiktionaryMenu(discord.ui.View):
     @discord.ui.button(emoji='<:left:1085573430281252976>', style=discord.ButtonStyle.red, custom_id='left_button')
     async def left(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
-        self.index -= 1
-        await interaction.message.edit(embed=self.embeds[self.index])
+        if self.index > 0:
+            self.index -= 1
+            await interaction.message.edit(embed=self.embeds[self.index])
         # left button 
     @discord.ui.button(emoji='<:right:1085573441375178824>', style=discord.ButtonStyle.red, custom_id='right_button')
     async def right(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
-        self.index += 1
-        await interaction.message.edit(embed=self.embeds[self.index])
+        if self.index < (len(self.embeds) - 1):
+            self.index += 1
+            await interaction.message.edit(embed=self.embeds[self.index])
         # right button
 
 async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part: str = 'all'):
