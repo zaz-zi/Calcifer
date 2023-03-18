@@ -141,6 +141,10 @@ def generateOutput(inputWord: str, speechPart: str):
         else:
             output = 'The word does not fit into the specified part of speech'
 
+    for key, value in list(output.items()):
+        if not value:
+            del output[key]
+
     return output
 
 class WiktionaryMenu(discord.ui.View):
