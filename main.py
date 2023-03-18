@@ -71,9 +71,7 @@ async def on_message(message):
         channels = json.load(file)
         proofreading = client.get_channel(channels['proofreading'])
     with io.open('proofreading_banned_links.json', encoding='utf-8') as file:
-        links = json.load(file)
-        global waitingToSend
-    
+        links = json.load(file)    
     if message.channel == proofreading:
         if message.author.id != 1081285777562013817:
             text = message.content
