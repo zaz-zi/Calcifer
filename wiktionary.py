@@ -108,7 +108,17 @@ def generateOutput(inputWord: str, speechPart: str):
 
     return output
 
-
+class WiktionaryMenu(discord.ui.View):
+    def __init__(self):
+        super().__init__(timeout=None)
+    @discord.ui.button(emoji='<:left:1085573430281252976>', style=discord.ButtonStyle.red, custom_id='left_button')
+    async def left(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        # left button 
+    @discord.ui.button(emoji='<:right:1085573441375178824>', style=discord.ButtonStyle.red, custom_id='right_button')
+    async def right(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await interaction.response.defer()
+        # right button
 
 async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part: str = 'all'):
     output = generateOutput(inpWord, speech_part)
@@ -121,10 +131,9 @@ async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part
         file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
         embed = discord.Embed(type='rich', title=f'{inpWord}', url=f'https://en.wiktionary.org/wiki/{urlStr}', description=output, color=0xeed6ae)
         embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
-        await interaction.response.send_message(file=file, embed=embed)
+        await interaction.response.send_message(file=file, embed=embed, view=WiktionaryMenu())
     else:
         file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
         embed = discord.Embed(type='rich', title='Error', description=output, color=0xeed6ae)
         embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
-    
