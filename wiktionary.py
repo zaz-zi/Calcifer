@@ -148,15 +148,21 @@ def generateOutput(inputWord: str, speechPart: str):
     return output
 
 class WiktionaryMenu(discord.ui.View):
-    def __init__(self):
+    def __init__(self, embeds, index):
         super().__init__(timeout=None)
+        self.embeds = embeds
+        self.index = index
     @discord.ui.button(emoji='<:left:1085573430281252976>', style=discord.ButtonStyle.red, custom_id='left_button')
     async def left(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
+        self.index -= 1
+        await interaction.message.edit(embed=self.embeds[self.index])
         # left button 
     @discord.ui.button(emoji='<:right:1085573441375178824>', style=discord.ButtonStyle.red, custom_id='right_button')
     async def right(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.response.defer()
+        self.index += 1
+        await interaction.message.edit(embed=self.embeds[self.index])
         # right button
 
 async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part: str = 'all'):
@@ -167,10 +173,19 @@ async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part
             finalString += f'{i}\n'
     urlStr = inpWord.replace(' ', '_')
     if output != 'Word or phrase not found' and output != 'The word does not fit into the specified part of speech':
-        file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
-        embed = discord.Embed(type='rich', title=f'{inpWord}', url=f'https://en.wiktionary.org/wiki/{urlStr}', description=output, color=0xeed6ae)
-        embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
-        await interaction.response.send_message(file=file, embed=embed, view=WiktionaryMenu())
+        if len(output) == 1:
+            file = discord.File('wiktionary_icon.png',filename="wiktionary_icon.png")
+            embed = discord.Embed(type='rich', title=inpWord, url=f'https://en.wiktionary.org/wiki/{urlStr}', description=output['Etymology'], color=0xeed6ae)
+            embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
+            await interaction.response.send_message(file=file, embed=embed)
+        else:
+            file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
+            embeds = []
+            for key, value in output.items():
+                embed = discord.Embed(type='rich', title=inpWord, url=f'https://en.wiktionary.org/wiki/{urlStr}', description=f'{key}\n\n{value}', color=0xeed6ae)
+                embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
+                embeds.append(embed)
+            await interaction.response.send_message(file=file, embed=embeds[0], view=WiktionaryMenu(embeds, 0))
     else:
         file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
         embed = discord.Embed(type='rich', title='Error', description=output, color=0xeed6ae)
