@@ -115,7 +115,7 @@ async def self(interaction: discord.Interaction):
     await rules.rules(interaction)
 
 
-@client.tree.command(name='rule', description='Display a specific rule. Please specify rule number and language (ru/en). Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='rule', description='Display a specific rule. Please specify the rule number and language (ru/en). Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, rule_number: str, lang: str):
     await rules.rule(interaction, rule_number=rule_number, lang=lang)
 
