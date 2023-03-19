@@ -2,6 +2,7 @@ import discord
 import asyncio
 import io
 import datetime
+import json
 
 
 async def mute(interaction: discord.Interaction, member: discord.Member, duration: int, time_unit: str = 'm', reason: str = 'blank'):
@@ -151,3 +152,11 @@ async def clear(interaction: discord.Interaction, amount: int):
             await channel.send(f'{amount} messages deleted', delete_after=20)
         else:
             await interaction.response.send_message('You cannot delete more than 100 messages', ephemeral=True)
+
+async def resolve(interaction: discord.Interaction):
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        languageQuestions = interaction.guild.get_channel(channels['language-questions'])
+    if interaction.channel in languageQuestions.threads:
+        interaction.channel.locked = True
+        await interaction.response.send_message('This thread has been locked')

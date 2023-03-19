@@ -237,4 +237,9 @@ async def self(interaction: discord.Interaction, amount: int):
 async def self(interaction: discord.Interaction):
     await resources.resources(interaction)
 
+
+@client.tree.command(name='resolve', description='Lock thread')
+async def self(interaction: discord.Interaction):
+    await resources.resources(interaction)
+
 client.run('MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')
