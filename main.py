@@ -29,6 +29,7 @@ class PersistentViewBot(commands.Bot):
         self.add_view(roles.EnglishMenu())
         self.add_view(roles.RussianMenu())
         self.add_view(roles.HeritageMenu())
+        
 
 client = PersistentViewBot()
 
