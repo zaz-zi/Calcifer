@@ -5,27 +5,30 @@ async def create(interaction: discord.Interaction, client: discord.Client, user_
     if interaction.user.voice is None:
         await interaction.response.send_message('You have to be in a voice channel to use this command!', ephemeral=True)
     else:
-        guild = interaction.guild
-        category = discord.utils.get(
-            guild.categories, name='Temporary Channels')
-        if category is None:
-            category = await guild.create_category('Temporary Channels')
-        if channel_name == 'default':
-            channel_name = f"{interaction.user.display_name}\'s Channel"
-        overwrites = {
-            guild.default_role: discord.PermissionOverwrite(connect=True),
-            interaction.user: discord.PermissionOverwrite(connect=True)
-        }
-        channel = await category.create_voice_channel(name=channel_name, overwrites=overwrites)
-        await channel.edit(user_limit=user_limit)
-        await interaction.user.move_to(channel)
-        await channel.set_permissions(interaction.user, manage_channels=True)
-        await interaction.response.send_message('Your temporary channel has been created!', ephemeral=True)
+        if user_limit >= 0 and user_limit <= 99:
+            guild = interaction.guild
+            category = discord.utils.get(
+                guild.categories, name='Temporary Channels')
+            if category is None:
+                category = await guild.create_category('Temporary Channels')
+            if channel_name == 'default':
+                channel_name = f"{interaction.user.display_name}\'s Channel"
+            overwrites = {
+                guild.default_role: discord.PermissionOverwrite(connect=True),
+                interaction.user: discord.PermissionOverwrite(connect=True)
+            }
+            channel = await category.create_voice_channel(name=channel_name, overwrites=overwrites)
+            await channel.edit(user_limit=user_limit)
+            await interaction.user.move_to(channel)
+            await channel.set_permissions(interaction.user, manage_channels=True)
+            await interaction.response.send_message('Your temporary channel has been created!', ephemeral=True)
 
-        def check(x, y, z):
-            return len(channel.members) == 0
-        await client.wait_for('voice_state_update', check=check)
-        await channel.delete()
+            def check(x, y, z):
+                return len(channel.members) == 0
+            await client.wait_for('voice_state_update', check=check)
+            await channel.delete()
+        else:
+            await interaction.response.send_message('You have entered an invalid user limit. Please enter a value between 1 and 99.', ephemeral=True)
 
 
 async def ban(interaction: discord.Interaction, member: discord.Member):
@@ -114,7 +117,7 @@ async def limit(interaction: discord.Interaction, new_limit: int):
     elif interaction.user.voice.channel.permissions_for(interaction.user).manage_channels == False:
         await interaction.response.send_message('You do not have permission to unlock this channel!', ephemeral=True)
     elif new_limit < 1 or new_limit > 99:
-        await interaction.response.send_message('Please give a number between 1 and 99', ephemeral=True)
+        await interaction.response.send_message('You have entered an invalid user limit. Please enter a value between 1 and 99.', ephemeral=True)
     else:
         channel = interaction.user.voice.channel
         await channel.edit(user_limit=new_limit)
