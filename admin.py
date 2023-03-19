@@ -158,5 +158,6 @@ async def resolve(interaction: discord.Interaction):
         channels = json.load(file)
         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
     if interaction.channel in languageQuestions.threads:
-        interaction.channel.archived = True
+        interaction.channel.locked = True
+        print(f'{interaction.channel.locked} {interaction.channel.id}')
         await interaction.response.send_message('This thread has been locked')
