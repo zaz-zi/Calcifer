@@ -12,6 +12,7 @@ from datetime import datetime
 import wiktionary
 import help
 import asyncio
+from resources import resources
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -228,7 +229,10 @@ async def self(interaction: discord.Interaction):
 @client.tree.command(name='remove', description='Remove up to 100 recent messages', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
-    
+
+@client.tree.command(name='ru_resources', description='ru_resources')
+async def self(interaction: discord.Interaction):
+    await resources.resources(interaction)
 
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')

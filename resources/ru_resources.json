@@ -1,0 +1,79 @@
+{
+    "intro": "Welcome to the <#1085308731148996609> channel!\n\nWe have restricted the ability to post messages here to prevent dubious resources from being shared and to keep this channel focused and spam free overall. However, we still want to hear from you! If you have any resources related to learning Russian that you think would benefit the community, please feel free to DM <@208925157002051584> and/or <@327890194806341635> with your suggestions. While we cannot guarantee that every suggestion will be posted, we will review all submissions and post the best resources that we believe would be valuable to the PYRE community.\n\nThank you for your cooperation in keeping this channel a valuable resource for language learners!",
+    
+    "nav_items": [
+        "Grammar References & Workbooks",
+        "Online Dictionaries",
+        "Translation Tools",
+        "Live Language Use Lookup",
+        "Corpora"
+    ],
+
+    "categories": {
+
+        "grammar_references_workbooks": {
+            "wade": {
+                "title": "A Comprehensive Russian Grammar",
+                "desc": "by Terence Wade is an essential resource for intermediate and advanced Russian language learners. This comprehensive grammar guide covers all major topics with clear explanations and helpful examples, making it an invaluable reference for those looking to deepen their understanding of the language.",
+                "url": "https://google.com/"
+            },
+            "schaum": {
+                "title": "Schaum's Outline of Russian Grammar",
+                "desc": "by James S. Levine is a concise study guide that covers all the key grammar rules in Russian. It includes clear explanations and practice exercises for verb conjugation, noun declension, and more, making it an excellent resource for learners of all levels looking to improve their understanding of Russian grammar.",
+                "url": "https://google.com/"
+            }
+
+        },
+        "online_dictionaries": {
+            "wiktionary": {
+                "title": "Wiktionary",
+                "desc": "is a collaborative, multilingual dictionary that provides definitions, etymologies, and translations for words in various languages, including Russian and English. With its community-driven content, Wiktionary is a valuable resource for learners seeking to expand their vocabulary and deepen their understanding of language.\n\n_Note: it's worth checking both the English and Russian versions of an article for a comprehensive understanding, as each may provide unique information._",
+                "url": "https://www.wiktionary.org/"
+            },
+            "karta": {
+                "title": "Карта слов и выражений русского языка",
+                "desc": "is a unique, interactive online thesaurus entirely in Russian that allows users to search for associations, synonyms, contextual connections, and example sentences for words and phrases in the Russian language. This tool is a valuable resource for Russian language learners seeking to deepen their understanding of the language in an innovative way.",
+                "url": "https://kartaslov.ru/"
+            }
+        },
+
+        "translation_tools": {
+            "deepl": {
+                "title": "DeepL Translator",
+                "desc": "is an AI-powered online translation tool that offers accurate translations between multiple languages, including Russian and English. With a built-in dictionary and usage examples, it is a user-friendly choice for language learners and professionals seeking high-quality translations.",
+                "url": "https://www.deepl.com/"
+            },
+            "yandex": {
+                "title": "Yandex Translate",
+                "desc": "is a free online translation tool that provides accurate translations between multiple languages, with a strong focus on Russian language. It offers text, voice, and image translation features, as well as a built-in dictionary and usage examples, making it a useful resource for translating to and from Russian.",
+                "url": "https://translate.yandex.com/"
+            },
+            "reverso": {
+                "title": "Reverso Context",
+                "desc": "is a powerful online tool for translation and language learning. It offers context-based translation, allowing users to see how words and phrases are used in real-life examples in multiple languages, including Russian and English. With a vast database of bilingual texts and its machine translation engine, Reverso Context is an excellent resource for anyone looking to improve their language skills or get reliable translations.\n\n_Note: Reverso Context is not an online translator, rather a translation database. Use it accordingly, as translations may not always be the best._",
+                "url": "https://context.reverso.net/"
+            }
+        },
+
+        "live_language_use_lookup": {
+            "youglish": {
+                "title": "YouGlish",
+                "desc": "is an online tool that allows language learners to improve their listening and pronunciation skills by providing access to real-life examples of spoken language from YouTube videos in multiple languages, including Russian and English. It is an invaluable resource for anyone looking to enhance their language abilities in a practical and engaging way.\n\n_Note: to improve the accuracy of your search for specific phrases and sentences, make sure to enclose the input in quotation marks_",
+                "url": "https://youglish.com/"
+            },
+            "filmot": {
+                "title": "Filmot",
+                "desc": "is a good alternative to YouGlish that also allows users to search for and listen to authentic language usage in various contexts taken from YouTube videos. It provides a wider range of entries to choose from and allows users to apply filters such as language and country to narrow down their search. With its extensive database, Filmot is a useful resource for learners looking to improve their listening and pronunciation skills.\n\n_Note: to improve the accuracy of your search for specific phrases and sentences, make sure to enclose the input in quotation marks._",
+                "url": "https://filmot.com/"
+            }
+        },
+
+        "corpora": {
+            "ngram": {
+                "title": "Google Books Ngram Viewer",
+                "desc": "is a web-based tool that allows users to search and analyze the frequency of words and phrases in millions of books published over the past several centuries in multiple languages, including Russian and English. Users can enter a query and see how its usage has changed over time, as well as compare it to other queries. The results are displayed in a graph that shows the frequency of the query over time.",
+                "url": "https://google.com"
+            }
+        }
+    }
+}

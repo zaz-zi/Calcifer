@@ -1,0 +1,9 @@
+# fly.toml file generated for calciferbot on 2023-03-19T18:38:16+03:00
+
+app = "calciferbot"
+kill_signal = "SIGINT"
+kill_timeout = 5
+primary_region = "waw"
+processes = []
+
+[env]
