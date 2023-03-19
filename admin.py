@@ -148,6 +148,6 @@ async def clear(interaction: discord.Interaction, amount: int):
             channel = interaction.channel
             await interaction.response.send_message('Please stand by', ephemeral=True)
             await channel.purge(limit=amount)
-            await channel.send(f'{amount} messages deleted.', delete_after=20)
+            await channel.send(f'{amount} messages deleted', delete_after=20)
         else:
             await interaction.response.send_message('You cannot delete more than 100 messages', ephemeral=True)

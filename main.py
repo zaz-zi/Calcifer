@@ -29,7 +29,7 @@ class PersistentViewBot(commands.Bot):
         self.add_view(roles.EnglishMenu())
         self.add_view(roles.RussianMenu())
         self.add_view(roles.HeritageMenu())
-        
+
 
 client = PersistentViewBot()
 
@@ -112,9 +112,10 @@ async def on_message_delete(message):
     with io.open('channel_ids.json', encoding='utf-8') as file:
         channels = json.load(file)
         modLog = client.get_channel(channels['mod-log'])
-    # role = discord.utils.find(lambda r: r.name == 'Moderator', message.guild.roles)
-    # if role not in message.author.roles:
-    await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
+    role = discord.utils.find(
+        lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
+    if role not in message.author.roles and message.author.id != 1081285777562013817:
+        await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
                 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
@@ -197,7 +198,7 @@ async def self(interaction: discord.Interaction, member: discord.Member):
     await admin.unmute(interaction, member)
 
 
-@client.tree.command(name='mute_check', description='Refreshes Calcifer\'s mute memory. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='mute_check', description='Refresh Calcifer\'s mute memory. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await admin.mute_check(interaction)
 
@@ -231,7 +232,8 @@ async def self(interaction: discord.Interaction):
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
 
-@client.tree.command(name='ru_resources', description='ru_resources')
+
+@client.tree.command(name='ru_resources', description='Post Russian learning resources. Moderator only.')
 async def self(interaction: discord.Interaction):
     await resources.resources(interaction)
 
