@@ -109,7 +109,7 @@ async def unlock(interaction: discord.Interaction):
         }
         await channel.edit(overwrites=overwrites)
         await interaction.response.send_message('Your channel has been unlocked!', ephemeral=True)
-
+        
 
 async def limit(interaction: discord.Interaction, new_limit: int):
     if interaction.user.voice is None:
