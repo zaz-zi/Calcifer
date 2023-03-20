@@ -252,6 +252,6 @@ async def self(interaction: discord.Interaction):
 
 @client.tree.command(name='nigger', description='Post guidelines for the proofreading channel. Moderator only.')
 async def self(interaction: discord.Interaction):
-    await proofreading.proofreading(interaction)
+    await help.nigger(interaction)
 
 client.run('MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')
