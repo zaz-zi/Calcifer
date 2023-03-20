@@ -46,6 +46,7 @@ async def nigger(interaction: discord.Interaction):
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
     else:
+        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=20)
         with io.open('help.json', encoding='utf-8') as file:
             jsonHelp = json.load(file)
             guideEn = jsonHelp['nigger']['en']
