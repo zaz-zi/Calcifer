@@ -1,6 +1,7 @@
 import discord
 import json
 import io
+import asyncio
 
 
 
@@ -18,9 +19,10 @@ async def resources(interaction: discord.Interaction):
             categories = jsonResources['categories']
             nav_items = jsonResources['nav_items']
 
-        # embedIntro = discord.Embed=(color=0xffa400, type='rich', description=intro)
+        embedIntro = discord.Embed(color=0xffa400, type='rich', description=intro)
         # await interaction.channel.send(content=intro)
-        # await interaction.channel.send(embed=embedIntro)
+        await interaction.channel.send(embed=embedIntro)
+        await asyncio.sleep(60*10)
 
         for category, category_items_dict in categories.items():
             file = discord.File(f'resources/category_{category}.png', filename=f'category_{category}.png')

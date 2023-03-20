@@ -230,7 +230,7 @@ async def self(interaction: discord.Interaction):
     await help.help(interaction)
 
 
-@client.tree.command(name='remove', description='Remove up to 100 recent messages', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='remove', description='Remove up to 100 recent messages. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
 
@@ -240,11 +240,12 @@ async def self(interaction: discord.Interaction):
     await resources.resources(interaction)
 
 
-@client.tree.command(name='resolve', description='Lock thread')
+@client.tree.command(name='resolved', description='Lock and tag the current post as resolved')
 async def self(interaction: discord.Interaction):
     await admin.resolve(interaction)
 
-@client.tree.command(name='proofreading', description='Post proofreading guides. Moderator only.')
+
+@client.tree.command(name='proofreading', description='Post guidelines for the proofreading channel. Moderator only.')
 async def self(interaction: discord.Interaction):
     await proofreading.proofreading(interaction)
 

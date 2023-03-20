@@ -208,7 +208,7 @@ async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part
             file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
             embeds = []
             for key, value in output.items():
-                embed = discord.Embed(type='rich', title=inpWord, url=f'https://en.wiktionary.org/wiki/{urlStr}', description=f'{key}\n\n{value}', color=0xeed6ae)
+                embed = discord.Embed(type='rich', title=inpWord, url=f'https://en.wiktionary.org/wiki/{urlStr}', description=f'**{key}**\n\n{value}', color=0xeed6ae)
                 embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
                 embeds.append(embed)
             await interaction.response.send_message(file=file, embed=embeds[0], view=WiktionaryMenu(embeds, 0))

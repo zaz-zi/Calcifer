@@ -166,7 +166,7 @@ async def resolve(interaction: discord.Interaction):
                     resolvedTag = tag
             await interaction.channel.add_tags(resolvedTag)
             print(f'{interaction.channel.locked} {interaction.channel.id}')
-            await interaction.response.send_message('This thread has been locked')
+            await interaction.response.send_message('This post has been locked')
         else:
             await interaction.response.send_message(f'You can only use this command in a {languageQuestions.mention} post')
     else:
