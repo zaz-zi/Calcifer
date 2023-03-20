@@ -154,7 +154,7 @@ async def clear(interaction: discord.Interaction, amount: int):
             await interaction.response.send_message('You cannot delete more than 100 messages', ephemeral=True)
 
 async def resolve(interaction: discord.Interaction):
-    if interaction.channel.permissions_for(interaction.user).manage_channels == True:
+    if interaction.channel.permissions_for(interaction.user).manage_channels == True or interaction.user == interaction.channel.owner:
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             languageQuestions = interaction.guild.get_channel(channels['language-questions'])
