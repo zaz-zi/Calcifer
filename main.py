@@ -109,14 +109,24 @@ async def on_message(message):
 
 
 @client.event
+async def on_guild_channel_create(channel):
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        languageQuestions = client.get_channel(channels['language-questions'])
+    if channel in languageQuestions.threads:
+        print(channel.history())
+
+
+@client.event
 async def on_message_delete(message):
     with io.open('channel_ids.json', encoding='utf-8') as file:
         channels = json.load(file)
         modLog = client.get_channel(channels['mod-log'])
     role = discord.utils.find(
         lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
-    if role not in message.author.roles and message.author.id != 1081285777562013817:
-        await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
+    if message.author.id != 1081285777562013817:
+        if role not in message.author.roles:
+            await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
                 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))

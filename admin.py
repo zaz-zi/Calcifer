@@ -154,15 +154,20 @@ async def clear(interaction: discord.Interaction, amount: int):
             await interaction.response.send_message('You cannot delete more than 100 messages', ephemeral=True)
 
 async def resolve(interaction: discord.Interaction):
-    with io.open('channel_ids.json', encoding='utf-8') as file:
-        channels = json.load(file)
-        languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-    if interaction.channel in languageQuestions.threads:
-        interaction.channel.locked = True
-        await interaction.channel.edit(locked=True)
-        for tag in languageQuestions.available_tags:
-            if 'Resolved' in tag.name:
-                resolvedTag = tag
-        await interaction.channel.add_tags(tag)
-        print(f'{interaction.channel.locked} {interaction.channel.id}')
-        await interaction.response.send_message('This thread has been locked')
+    if interaction.channel.permissions_for(interaction.user).manage_channels == True:
+        with io.open('channel_ids.json', encoding='utf-8') as file:
+            channels = json.load(file)
+            languageQuestions = interaction.guild.get_channel(channels['language-questions'])
+        if interaction.channel in languageQuestions.threads:
+            interaction.channel.locked = True
+            await interaction.channel.edit(locked=True)
+            for tag in languageQuestions.available_tags:
+                if 'Resolved' in tag.name:
+                    resolvedTag = tag
+            await interaction.channel.add_tags(resolvedTag)
+            print(f'{interaction.channel.locked} {interaction.channel.id}')
+            await interaction.response.send_message('This thread has been locked')
+        else:
+            await interaction.response.send_message(f'You can only use this command in a {languageQuestions.mention} post')
+    else:
+        await interaction.response.send_message('You do not have permission to use this command in this channel', ephemeral=True, delete_after=20)
