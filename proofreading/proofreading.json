@@ -1,0 +1,22 @@
+{
+    "intro": "Welcome to <#1083180955734397008>!\n\nIf you have a longer text in Russian or English that you'd like help with, feel free to share it here. Calcifer, our trusty bot, will create a dedicated thread for your text and notify you.\n\nIf you think your text has been skipped or overlooked, you may repost it. However, only do this if you're sure it's been missed. Keep in mind that correcting texts may take some time, as all correctors are volunteering their efforts.\n\nFor those providing corrections, kindly react with <:pyre_check:1085562978713219175> to the message that leads to the thread once you've made your edits, so that others can see the original poster's text has been reviewed.\n\n*Please note: If your text exceeds 2,000 characters (default limit for non-Nitro users), we recommend uploading it to a text-editing service, preferably Google Docs. Share the link here, and Calcifer will create a thread for it, so others can provide suggestions and corrections using Google Docs' editing tools. You can then discuss the corrections within the thread.*\n\n**New to Google Docs?** Check out our short guide down below on how to upload your text, use Google Docs' editing tools, and more.\n\nHappy proofreading!",
+    "guides": {
+        "google_docs_guide": {
+            "title": "Creating a Google Doc for corrections:",
+            "embeds": {
+                "embed0": "1. Head to [Google Docs<:ext:1087057742222606496>](https://docs.google.com/document/u/0/)\n2. [<:blank:1087057292006010901>] Start a new Google document and write or paste your text into it (please avoid posting files that need downloading, like Microsoft Word files).",
+                "embed1": "a. [<:copy:1087057288621203596>] If you want, quickly make a copy by choosing: File > Make a copy.",
+                "embed2": "3. [<:restricted:1087085683660816535> -> <:anyone:1087085688152936478>] Click the Share button, then enter the name of your file.\n4. Change the setting to: \"Anyone on the internet with the link can comment.\"",
+                "embed3": "5. [<:link:1087087970395365399>] Copy the link and share it in the <#1083180955734397008> channel.\n6. Wait patiently for someone to correct your text."
+            }
+        },
+        "tips_for_correcting": {
+            "title": "Tips for correcting an entry:",
+            "embeds": {
+                "embed0": "1. Consider choosing the next text in line for correction instead of just the latest post. However, it's fine to just pick a text that interests you most.",
+                "embed1": "2. Add your suggestions directly within the Google Doc.",
+                "embed2": "a. If the author hasn't configured the access settings correctly and you're only able to view the document, notify them in their thread and explain that they need to adjust the settings accordingly.\n3. Once you've completed your corrections and believe they're accurate, react with :pyre_check: to the message that leads to the thread, signaling to others that it has been reviewed. Consider notifying the original poster within the thread too, to keep them informed of the changes made.\na. If you open a document that you believe someone else has fully corrected but the thread lacks the emote reaction, feel free to add it yourself."
+            }
+        }
+    }
+}
