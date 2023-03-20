@@ -59,7 +59,7 @@ async def nigger(interaction: discord.Interaction):
         embedRu = discord.Embed(color=0xffa440, type='rich', description=guideRu)
         embedEn.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
         embedRu.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
-        post = await languageQuestions.create_thread(name='How to properly use the #language-questions channel // Корректное использование канала')
+        post = await languageQuestions.create_thread(name='How to properly use the #language-questions channel // Корректное использование канала', content='How to properly use the #language-questions channel // Корректное использование канала')
         await post.send(embed=embedEn)
         await post.send(embed=embedRu)
 
