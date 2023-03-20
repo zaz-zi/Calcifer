@@ -109,11 +109,6 @@ async def on_message(message):
 
 
 @client.event
-async def on_guild_channel_create(channel):
-    channel.set_permissions(channel.owner, manage_channel=True)
-
-
-@client.event
 async def on_message_delete(message):
     with io.open('channel_ids.json', encoding='utf-8') as file:
         channels = json.load(file)
