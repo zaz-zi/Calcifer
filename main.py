@@ -110,11 +110,7 @@ async def on_message(message):
 
 @client.event
 async def on_guild_channel_create(channel):
-    with io.open('channel_ids.json', encoding='utf-8') as file:
-        channels = json.load(file)
-        languageQuestions = client.get_channel(channels['language-questions'])
-    if channel in languageQuestions.threads:
-        channel.set_permissions(channel.owner, manage_channels=True)
+    channel.set_permissions(channel.owner, manage_channels=True)
 
 
 @client.event
