@@ -114,7 +114,7 @@ async def on_guild_channel_create(channel):
         channels = json.load(file)
         languageQuestions = client.get_channel(channels['language-questions'])
     if channel in languageQuestions.threads:
-        channel.send(channel.history())
+        channel.send(channel.owner_id)
 
 
 @client.event
