@@ -15,12 +15,12 @@
             "wade": {
                 "title": "A Comprehensive Russian Grammar",
                 "desc": "by Terence Wade is an essential resource for intermediate and advanced Russian language learners. This comprehensive grammar guide covers all major topics with clear explanations and helpful examples, making it an invaluable reference for those looking to deepen their understanding of the language.",
-                "url": "https://google.com/"
+                "url": "https://drive.google.com/uc?export=download&id=1jJ_KHIzxWRxaLbYCzM7OdZa_c5bVtYPE"
             },
             "schaum": {
                 "title": "Schaum's Outline of Russian Grammar",
                 "desc": "by James S. Levine is a concise study guide that covers all the key grammar rules in Russian. It includes clear explanations and practice exercises for verb conjugation, noun declension, and more, making it an excellent resource for learners of all levels looking to improve their understanding of Russian grammar.",
-                "url": "https://google.com/"
+                "url": "https://drive.google.com/uc?export=download&id=10fLqghn6SVOvVbWyVxchsjyxb5BMkpTJ"
             }
 
         },
@@ -72,7 +72,7 @@
             "ngram": {
                 "title": "Google Books Ngram Viewer",
                 "desc": "is a web-based tool that allows users to search and analyze the frequency of words and phrases in millions of books published over the past several centuries in multiple languages, including Russian and English. Users can enter a query and see how its usage has changed over time, as well as compare it to other queries. The results are displayed in a graph that shows the frequency of the query over time.",
-                "url": "https://google.com"
+                "url": "https://books.google.com/ngrams/"
             }
         }
     }

@@ -18,8 +18,9 @@ async def resources(interaction: discord.Interaction):
             categories = jsonResources['categories']
             nav_items = jsonResources['nav_items']
 
-        # await interaction.channel.send(content=intro)
         # embedIntro = discord.Embed=(color=0xffa400, type='rich', description=intro)
+        # await interaction.channel.send(content=intro)
+        # await interaction.channel.send(embed=embedIntro)
 
         for category, category_items_dict in categories.items():
             file = discord.File(f'resources/category_{category}.png', filename=f'category_{category}.png')
@@ -32,13 +33,13 @@ async def resources(interaction: discord.Interaction):
                 await interaction.channel.send(file=file, embed=embedItem)
 
         nav_desc = '<:nav:1087012547053490267> Quick Navigation\n\n'
-        ids = ''
+        nav_cat_ids_list = []
 
-        async for message in interaction.channel.history(limit=50):
+        async for message in interaction.channel.history(limit=20):
             if message.attachments and 'category_' in message.attachments[0].filename:
-                ids = f' {message.id}' + ids
+                nav_cat_ids_list.insert(0, message.id)
 
-        for i, id in enumerate(ids.split()):
+        for i, id in enumerate(nav_cat_ids_list):
             nav_desc += f'[{nav_items[i]}](https://discord.com/channels/{interaction.guild_id}/{interaction.channel_id}/{id})\n'
 
         embedNav = discord.Embed(color=0xffa400, type='rich', description=nav_desc)
