@@ -13,6 +13,7 @@ import wiktionary
 import help
 import asyncio
 from resources import resources
+from proofreading import proofreading
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -48,8 +49,7 @@ async def on_voice_state_update(member, before, after):
             with io.open('channel_ids.json', encoding='utf-8') as file:
                 channels = json.load(file)
                 botInfo = client.get_channel(channels['bot-info'])
-                botCommands = client.get_channel(channels['bot-commands'])
-            await after.channel.send(f'{member.mention} type in "/voice_create [user limit] [channel name]" to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
+            await after.channel.send(f'{member.mention} type in */voice_create [user limit] [channel name]* to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
 
 
 @client.event
@@ -114,8 +114,9 @@ async def on_message_delete(message):
         modLog = client.get_channel(channels['mod-log'])
     role = discord.utils.find(
         lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
-    if role not in message.author.roles and message.author.id != 1081285777562013817:
-        await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
+    if message.author.id != 1081285777562013817:
+        if role not in message.author.roles:
+            await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
                 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
@@ -228,7 +229,7 @@ async def self(interaction: discord.Interaction):
     await help.help(interaction)
 
 
-@client.tree.command(name='remove', description='Remove up to 100 recent messages', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='remove', description='Remove up to 100 recent messages. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
 
@@ -238,8 +239,18 @@ async def self(interaction: discord.Interaction):
     await resources.resources(interaction)
 
 
-@client.tree.command(name='resolve', description='Lock thread')
+@client.tree.command(name='resolved', description='Lock and tag the current post as resolved')
 async def self(interaction: discord.Interaction):
-    await resources.resources(interaction)
+    await admin.resolve(interaction)
+
+
+@client.tree.command(name='proofreading', description='Post guidelines for the proofreading channel. Moderator only.')
+async def self(interaction: discord.Interaction):
+    await proofreading.proofreading(interaction)
+
+
+@client.tree.command(name='language_questions', description='Generate a post with channel guidelines. Moderator only.')
+async def self(interaction: discord.Interaction):
+    await help.nigger(interaction)
 
 client.run('MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')
