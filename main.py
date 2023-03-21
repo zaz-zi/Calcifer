@@ -249,7 +249,7 @@ async def self(interaction: discord.Interaction):
     await proofreading.proofreading(interaction)
 
 
-@client.tree.command(name='nigger', description='Post guidelines for the proofreading channel. Moderator only.')
+@client.tree.command(name='language_questions', description='Generate a post with channel guidelines. Moderator only.')
 async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
