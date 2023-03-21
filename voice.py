@@ -10,9 +10,9 @@ async def create(interaction: discord.Interaction, client: discord.Client, user_
         if user_limit >= 0 and user_limit <= 99:
             guild = interaction.guild
             category = discord.utils.get(
-                guild.categories, name='Temporary Channels')
+                guild.categories, name='Temporary Voice Channels')
             if category is None:
-                category = await guild.create_category('Temporary Channels')
+                category = await guild.create_category('Temporary Voice Channels')
             if channel_name == 'default':
                 channel_name = f"{interaction.user.display_name}\'s Channel"
             overwrites = {
