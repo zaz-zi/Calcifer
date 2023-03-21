@@ -20,6 +20,7 @@ async def resources(interaction: discord.Interaction):
             nav_items = jsonResources['nav_items']
 
         embedIntro = discord.Embed(color=0xffa400, type='rich', description=intro)
+        embedIntro.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
         # await interaction.channel.send(content=intro)
         await interaction.channel.send(embed=embedIntro)
         await asyncio.sleep(60*10)
@@ -29,7 +30,7 @@ async def resources(interaction: discord.Interaction):
             await interaction.channel.send(file=file)
             for item, item_attr_dict in category_items_dict.items():
                 file = discord.File(f'resources/banner_{item}.png', filename=f'banner_{item}.png')
-                item_desc = f"[{item_attr_dict['title']}<:ext2:1086548668380885004>]({item_attr_dict['url']}) {item_attr_dict['desc']}"
+                item_desc = f"[{item_attr_dict['title']}<:ext:1087057742222606496>]({item_attr_dict['url']}) {item_attr_dict['desc']}"
                 embedItem = discord.Embed(color=0x2c2d31, type='rich', description=item_desc)
                 embedItem.set_image(url=f'attachment://banner_{item}.png')
                 await interaction.channel.send(file=file, embed=embedItem)
