@@ -16,7 +16,7 @@ async def proofreading(interaction: discord.Interaction):
             intro = jsonProofreading['intro']
             guides = jsonProofreading['guides']
         
-        with io.open('../channel_ids.json', encoding='utf-8') as file:
+        with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             proofreading = interaction.guild.get_channel(channels['proofreading'])
 
