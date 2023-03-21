@@ -88,10 +88,12 @@ async def lock(interaction: discord.Interaction):
         await interaction.response.send_message('You do not have permission to lock this channel!', ephemeral=True, delete_after=20)
     else:
         guild = interaction.guild
+        role = discord.utils.find(lambda r: r.name == 'Moderator', guild.roles)
         channel = interaction.user.voice.channel
         overwrites = {
             guild.default_role: discord.PermissionOverwrite(connect=False),
-            interaction.user: discord.PermissionOverwrite(connect=True, manage_channels=True)
+            interaction.user: discord.PermissionOverwrite(connect=True, manage_channels=True),
+            role: discord.PermissionOverwrite(connect=True, manage_channels=True)
         }
         await channel.edit(overwrites=overwrites)
         await interaction.response.send_message('Your channel has been locked!', ephemeral=True, delete_after=20)
