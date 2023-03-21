@@ -29,7 +29,7 @@ async def resources(interaction: discord.Interaction):
             await interaction.channel.send(file=file)
             for item, item_attr_dict in category_items_dict.items():
                 file = discord.File(f'resources/banner_{item}.png', filename=f'banner_{item}.png')
-                item_desc = f"[{item_attr_dict['title']}]({item_attr_dict['url']}) {item_attr_dict['desc']}"
+                item_desc = f"[{item_attr_dict['title']}<:ext2:1086548668380885004>]({item_attr_dict['url']}) {item_attr_dict['desc']}"
                 embedItem = discord.Embed(color=0x2c2d31, type='rich', description=item_desc)
                 embedItem.set_image(url=f'attachment://banner_{item}.png')
                 await interaction.channel.send(file=file, embed=embedItem)
