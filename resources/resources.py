@@ -20,6 +20,7 @@ async def resources(interaction: discord.Interaction):
             nav_items = jsonResources['nav_items']
 
         embedIntro = discord.Embed(color=0xffa400, type='rich', description=intro)
+        embedIntro.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
         # await interaction.channel.send(content=intro)
         await interaction.channel.send(embed=embedIntro)
         await asyncio.sleep(60*10)

@@ -17,6 +17,7 @@ async def proofreading(interaction: discord.Interaction):
             guides = jsonProofreading['guides']
 
         embedIntro = discord.Embed(color=0xffa440, type='rich', description=intro)
+        embedIntro.set_author(name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
         await interaction.channel.send(embed=embedIntro)
         await asyncio.sleep(60*10)
 
