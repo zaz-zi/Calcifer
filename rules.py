@@ -12,7 +12,7 @@ async def rule(interaction: discord.Interaction, rule_number: str, lang: str):
     guild = interaction.guild
     role = discord.utils.find(lambda r: r.name == 'Moderator', guild.roles)
     if role not in interaction.user.roles:
-        await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True)
+        await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True, delete_after=20)
     else:
         if lang == 'ru':
             with io.open('channel_ids.json', encoding='utf-8') as file:
@@ -49,7 +49,7 @@ async def rules(interaction: discord.Interaction):
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permmission to use this command!', ephemeral=True)
     else:
-        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=10)
+        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=20)
         file = discord.File('rules.png', filename="rules.png")
         embedPicture = discord.Embed(type='rich', color=0xffa400)
         embedPicture.set_image(

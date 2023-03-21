@@ -30,7 +30,7 @@ async def create(interaction: discord.Interaction, client: discord.Client, user_
             await client.wait_for('voice_state_update', check=check)
             await channel.delete()
         else:
-            await interaction.response.send_message('You have entered an invalid user limit. Please enter a value between 1 and 99.', ephemeral=True)
+            await interaction.response.send_message('You have entered an invalid user limit. Please enter a value between 1 and 99.', ephemeral=True, delete_after=20)
 
 
 async def ban(interaction: discord.Interaction, member: discord.Member):

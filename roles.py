@@ -11,7 +11,7 @@ class EnglishMenu(discord.ui.View):
     async def selfEnBeginner(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -55,7 +55,7 @@ class EnglishMenu(discord.ui.View):
     async def selfEnIntermediate(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -143,7 +143,7 @@ class EnglishMenu(discord.ui.View):
     async def selfEnNative(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -192,7 +192,7 @@ class RussianMenu(discord.ui.View):
     async def selfRuBeginner(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -236,7 +236,7 @@ class RussianMenu(discord.ui.View):
     async def selfRuIntermediate(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -280,7 +280,7 @@ class RussianMenu(discord.ui.View):
     async def selfRuAdvanced(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -323,7 +323,7 @@ class RussianMenu(discord.ui.View):
     async def selfRuNative(self, interaction: discord.Interaction, Button: discord.ui.Button):
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             with io.open('roles.json', encoding='utf-8') as file:
                 jsonRoles = json.load(file)
@@ -372,7 +372,7 @@ class HeritageMenu(discord.ui.View):
         role = interaction.user.guild.get_role(1079413567209611304)
         roleLocked = interaction.user.guild.get_role(1085620656332349490)
         if roleLocked in interaction.user.roles:
-            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=10)
+            await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
         else:
             if role in interaction.user.roles:
                 await interaction.user.remove_roles(role)
