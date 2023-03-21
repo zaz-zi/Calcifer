@@ -49,8 +49,7 @@ async def on_voice_state_update(member, before, after):
             with io.open('channel_ids.json', encoding='utf-8') as file:
                 channels = json.load(file)
                 botInfo = client.get_channel(channels['bot-info'])
-                botCommands = client.get_channel(channels['bot-commands'])
-            await after.channel.send(f'{member.mention} type in "/voice_create [user limit] [channel name]" to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
+            await after.channel.send(f'{member.mention} type in */voice_create [user limit] [channel name]* to create a temporary channel\n\nFor a more comprehensive list of available commands, please refer to {botInfo.mention}')
 
 
 @client.event

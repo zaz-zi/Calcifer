@@ -54,6 +54,10 @@ async def nigger(interaction: discord.Interaction):
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             languageQuestions = interaction.guild.get_channel(channels['language-questions'])
+            proofreading = interaction.guild.get_channel(channels['proofreading'])
+
+        guideEn = guideEn.replace("#proofreading", proofreading.mention).replace("#language-questions", languageQuestions.mention)
+        guideRu = guideRu.replace("#proofreading", proofreading.mention)
 
         embedEn = discord.Embed(color=0xffa440, type='rich', description=guideEn)
         embedRu = discord.Embed(color=0xffa440, type='rich', description=guideRu)

@@ -15,6 +15,12 @@ async def proofreading(interaction: discord.Interaction):
             jsonProofreading = json.load(file)
             intro = jsonProofreading['intro']
             guides = jsonProofreading['guides']
+        
+        with io.open('../channel_ids.json', encoding='utf-8') as file:
+            channels = json.load(file)
+            proofreading = interaction.guild.get_channel(channels['proofreading'])
+
+        intro = intro.replace("#proofreading", proofreading.mention)
 
         embedIntro = discord.Embed(color=0xffa440, type='rich', description=intro)
         await interaction.channel.send(embed=embedIntro)
