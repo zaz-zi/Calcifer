@@ -141,7 +141,7 @@ async def self(interaction: discord.Interaction, rule_number: str, lang: str):
     await rules.rule(interaction, rule_number=rule_number, lang=lang)
 
 
-@client.tree.command(name='help_translate', description='Display the full list of languages you can use via the "/translate" command', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='translate_help', description='Display the full list of languages you can use via the "/translate" command', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await translate.help_translate(interaction)
 
