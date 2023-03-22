@@ -89,3 +89,9 @@ async def rules(interaction: discord.Interaction):
             name="Practice Your Russian & English", icon_url=interaction.guild.icon.url)
 #        await interaction.channel.send(embed=embedIntro)
         await interaction.channel.send(embed=embedRules)
+
+        top = ''
+        async for message in interaction.channel.history(limit=1, oldest_first=True):
+            top = message.jump_url
+        
+        embedBacktoTop = discord.Embed(color=0x2c2d31, type='rich', desc='')
