@@ -76,9 +76,10 @@ async def on_message(message):
         links = json.load(file)    
     # webhook info
     with io.open('webhook_url.json', encoding='utf-8') as file:
-        webhook_url = json.load(file)
-        webhook_id = webhook_url['id']
-        webhook_token = webhook_url['token']
+        webhook_info = json.load(file)
+        webhook_id = webhook_info['id']
+        webhook_token = webhook_info['token']
+        webhook_target = webhook_info['proofreading_first_message_url']
     if message.channel == proofreading:
         if message.author.id not in {1081285777562013817, webhook_id}:
             text = message.content
@@ -98,7 +99,7 @@ async def on_message(message):
                             await oldPin.delete()
                             break
                     newPin_webhook = discord.Webhook.from_url(f'https://discord.com/api/webhooks/{webhook_id}/{webhook_token}', client=client)
-                    await newPin_webhook.send(content='Before posting, please check [our quick guide](https://discord.com/channels/1079023618450792498/1079074702213005373/1086403510339371039) on proper channel usage and text submission instructions.')
+                    await newPin_webhook.send(content=f'Before posting, please check [our quick guide]({webhook_target}) on proper channel usage and text submission instructions.')
                 else:
                     await proofreading.send(f'{message.author.mention} your message exceeds the 2,000 characters limit. Please refer to the pinned message of this channel for our quick guide on how to properly submit longer texts using Google Docs.', delete_after=20)
                     await message.delete()
