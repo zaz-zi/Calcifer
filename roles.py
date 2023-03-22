@@ -391,7 +391,7 @@ async def menuLangs(interaction: discord.Interaction):
 
         with io.open('roles.json', encoding='utf-8') as file:
             jsonRoles = json.load(file)
-            rolesHe = jsonRoles['he_preamble'] + jsonRoles['he']
+            rolesHe = jsonRoles['he_preamble_en'] + jsonRoles['he_en'] + jsonRoles['he_preamble_ru'] + jsonRoles['he_ru']
             rundownEn = jsonRoles['description_en']
             rundownRu = jsonRoles['description_ru']
         file = discord.File('roles.png', filename="roles.png")
