@@ -31,6 +31,12 @@ async def can_do(interaction: discord.Interaction):
         await asyncio.sleep(60*10)
         await interaction.channel.send(embed=embedEn)
         await interaction.channel.send(embed=embedRu)
+        top = ''
+        async for message in interaction.channel.history(limit=1, oldest_first=True):
+            top = str(message.jump_url)
+        
+        embedBacktoTop = discord.Embed(color=0x2c2d31, type='rich', description=f'[^ Back to Top]({top})')
+        await interaction.channel.send(embed=embedBacktoTop)
 
 
 async def help(interaction: discord.Interaction):

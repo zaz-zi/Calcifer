@@ -94,5 +94,5 @@ async def rules(interaction: discord.Interaction):
         async for message in interaction.channel.history(limit=1, oldest_first=True):
             top = message.jump_url
         
-        embedBacktoTop = discord.Embed(color=0x2c2d31, type='rich', desc=f'[^ Back to Top]({top})')
+        embedBacktoTop = discord.Embed(color=0x2c2d31, type='rich', description=f'[^ Back to Top]({top})')
         await interaction.channel.send(embed=embedBacktoTop)

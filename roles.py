@@ -423,3 +423,10 @@ async def menuLangs(interaction: discord.Interaction):
         embedHe = discord.Embed(
             type="rich", description=rolesHe, color=0xffa400)
         await interaction.channel.send(embed=embedHe, view=HeritageMenu())
+
+        top = ''
+        async for message in interaction.channel.history(limit=1, oldest_first=True):
+            top = str(message.jump_url)
+        
+        embedBacktoTop = discord.Embed(color=0x2c2d31, type='rich', description=f'[^ Back to Top]({top})')
+        await interaction.channel.send(embed=embedBacktoTop)
