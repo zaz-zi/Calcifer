@@ -95,4 +95,4 @@ async def rules(interaction: discord.Interaction):
             top = message.jump_url
         
         embedBacktoTop = discord.Embed(color=0x2c2d31, type='rich', desc=f'[^ Back to Top]({top})')
-        await interaction.channel.send(embed=embedRules)
+        await interaction.channel.send(embed=embedBacktoTop)
