@@ -99,13 +99,13 @@ async def on_message(message):
                             await oldPin.delete()
                             break
                     newPin_webhook = discord.Webhook.from_url(f'https://discord.com/api/webhooks/{webhook_id}/{webhook_token}', client=client)
-                    # pins = await proofreading.pins()
-                    # top = pins[0]
-                    top = ''
-                    async for item in message.channel.history(oldest_first=True, limit=1):
-                        top = str(message.jump_url)
-                    # await newPin_webhook.send(content=f'Before posting, please check [our quick guide](https://discord.com/channels/{message.guild.id}/{proofreading_id}/{top.id}) on proper channel usage and text submission instructions.')
-                    await newPin_webhook.send(content=f'Before posting, please check [our quick guide]({top}) on proper channel usage and text submission instructions.')
+                    pins = await proofreading.pins()
+                    top = pins[0]
+                    # top = ''
+                    # async for item in message.channel.history(oldest_first=True, limit=1):
+                    #     top = str(message.jump_url)
+                    await newPin_webhook.send(content=f'Before posting, please check [our quick guide](https://discord.com/channels/{message.guild.id}/{proofreading_id}/{top.id}) on proper channel usage and text submission instructions.')
+                    # await newPin_webhook.send(content=f'Before posting, please check [our quick guide]({top}) on proper channel usage and text submission instructions.')
                 else:
                     await proofreading.send(f'{message.author.mention} your message exceeds the 2,000 characters limit. Please refer to the pinned message of this channel for our quick guide on how to properly submit longer texts using Google Docs.', delete_after=20)
                     await message.delete()
