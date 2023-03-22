@@ -72,6 +72,7 @@ async def on_message(message):
     with io.open('channel_ids.json', encoding='utf-8') as file:
         channels = json.load(file)
         proofreading = client.get_channel(channels['proofreading'])
+        proofreading_id = str(channels['proofreading'])
     with io.open('proofreading_banned_links.json', encoding='utf-8') as file:
         links = json.load(file)    
     # webhook info
@@ -79,7 +80,6 @@ async def on_message(message):
         webhook_info = json.load(file)
         webhook_id = webhook_info['id']
         webhook_token = webhook_info['token']
-        webhook_target = webhook_info['proofreading_first_message_url']
     if message.channel == proofreading:
         if message.author.id not in {1081285777562013817, webhook_id}:
             text = message.content
@@ -93,13 +93,15 @@ async def on_message(message):
                     thread = await newMessage.create_thread(name=f"Submission by @{message.author.name}")
                     await thread.send(text)
                     await message.delete()
-                    # look through the last 10 messages for the old pin sent by {webhook_id} 
+                    # look through the last 10 messages for the old pin sent by {webhook_id}
                     async for oldPin in message.channel.history(limit=10):
                         if oldPin.author.id==webhook_id:
                             await oldPin.delete()
                             break
                     newPin_webhook = discord.Webhook.from_url(f'https://discord.com/api/webhooks/{webhook_id}/{webhook_token}', client=client)
-                    await newPin_webhook.send(content=f'Before posting, please check [our quick guide]({webhook_target}) on proper channel usage and text submission instructions.')
+                    pins = await proofreading.pins()
+                    top = pins[0]
+                    await newPin_webhook.send(content=f'Before posting, please check [our quick guide](https://discord.com/channels/{message.guild_id}/{proofreading_id}/{top.id}) on proper channel usage and text submission instructions.')
                 else:
                     await proofreading.send(f'{message.author.mention} your message exceeds the 2,000 characters limit. Please refer to the pinned message of this channel for our quick guide on how to properly submit longer texts using Google Docs.', delete_after=20)
                     await message.delete()
