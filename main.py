@@ -130,7 +130,7 @@ async def on_message_delete(message):
                     if entry.target == message.author:
                         deleter = entry.user
                         date = message.created_at.strftime('%y.%m.%d | %H:%M')
-                        await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
+                        await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) {message.content}')
                     else:
                         date = message.created_at.strftime('%y.%m.%d | %H:%M')
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
