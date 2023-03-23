@@ -126,12 +126,13 @@ async def on_message_delete(message):
             lambda r: r.name == 'Bots', client.get_guild(1079023618450792498).roles)
         if message.author.id != 1081285777562013817:
             if (role not in message.author.roles) and (botRole not in message.author.roles):
-                # async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
-                    # if entry.target == message.author:
-                    #     deleter = entry.user
-                    #     await modLog.send(f'{deleter.name} deleted a message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
-                    # else:
-                await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
+                async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
+                    if entry.target == message.author:
+                        deleter = entry.user
+                        await modLog.send(f'{deleter.name} deleted a message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
+                    else:
+                        date = message.created_at.strftime('%y-%m-%d %H:%M:%S')
+                        await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n{date}: **{message.content}**')
                 
                 
 
