@@ -46,10 +46,9 @@ class EnglishMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Intermediate', style=discord.ButtonStyle.red, custom_id='en2')
     async def selfEnIntermediate(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -90,10 +89,9 @@ class EnglishMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Advanced', style=discord.ButtonStyle.red, custom_id='en3')
     async def selfEnAdvanced(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -134,10 +132,9 @@ class EnglishMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Native Speaker', style=discord.ButtonStyle.red, custom_id='en4')
     async def selfEnNative(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -178,10 +175,9 @@ class EnglishMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
 
 class RussianMenu(discord.ui.View):
@@ -227,10 +223,9 @@ class RussianMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Intermediate', style=discord.ButtonStyle.red, custom_id='ru2')
     async def selfRuIntermediate(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -271,10 +266,9 @@ class RussianMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Advanced', style=discord.ButtonStyle.red, custom_id='ru3')
     async def selfRuAdvanced(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -314,10 +308,9 @@ class RussianMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
     @discord.ui.button(label='Native Speaker', style=discord.ButtonStyle.red, custom_id='ru4')
     async def selfRuNative(self, interaction: discord.Interaction, Button: discord.ui.Button):
@@ -357,10 +350,9 @@ class RussianMenu(discord.ui.View):
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
-                        introductions = interaction.guild.get_channel(channels['introductions'])
                         general = interaction.guild.get_channel(channels['general'])
                         languageQuestions = interaction.guild.get_channel(channels['language-questions'])
-                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to {introductions.mention}, and check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
+                    await interaction.response.send_message(f"Role granted. Congrats on getting verified {interaction.user.mention}!\nDon't forget to check out {general.mention} to say hi to the others! If you have any questions related to Russian or English, you can refer to {languageQuestions.mention}.\nEnjoy your stay!", ephemeral=True, delete_after=60*60)
 
 
 class HeritageMenu(discord.ui.View):
