@@ -116,14 +116,23 @@ async def on_message(message):
 
 @client.event
 async def on_message_delete(message):
-    with io.open('channel_ids.json', encoding='utf-8') as file:
-        channels = json.load(file)
-        modLog = client.get_channel(channels['mod-log'])
-    role = discord.utils.find(
-        lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
-    if message.author.id != 1081285777562013817:
-        if role not in message.author.roles:
-            await modLog.send(f'Deleted message by {message.author.name}:\n**{message.content}**')
+    if message.guild == discord.Object(id=1079023618450792498):
+        with io.open('channel_ids.json', encoding='utf-8') as file:
+            channels = json.load(file)
+            modLog = client.get_channel(channels['mod-log'])
+        role = discord.utils.find(
+            lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
+        botRole = discord.utils.find(
+            lambda r: r.name == 'Bots', client.get_guild(1079023618450792498).roles)
+        if message.author.id != 1081285777562013817:
+            if role not in message.author.roles and botRole not in message.author.roles:
+                async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
+                    if entry.target == message.author:
+                        deleter = entry.user
+                        await modLog.send(f'{deleter.name} deleted a message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
+                    else:
+                        await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
+                
                 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
