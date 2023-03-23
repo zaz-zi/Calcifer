@@ -116,7 +116,7 @@ async def on_message(message):
 
 @client.event
 async def on_message_delete(message):
-    if message.guild == discord.Object(id=1079023618450792498):
+    if message.guild_id == 1079023618450792498:
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             modLog = client.get_channel(channels['mod-log'])
@@ -131,7 +131,7 @@ async def on_message_delete(message):
                     #     deleter = entry.user
                     #     await modLog.send(f'{deleter.name} deleted a message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
                     # else:
-                await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n**{message.content}**')
+                await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
                 
                 
 
