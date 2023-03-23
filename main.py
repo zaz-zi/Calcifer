@@ -8,7 +8,7 @@ import dictionaries
 import json
 import io
 import admin
-from datetime import datetime
+import datetime
 import wiktionary
 import help
 import asyncio
@@ -129,10 +129,10 @@ async def on_message_delete(message):
                 async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
                     if entry.target == message.author:
                         deleter = entry.user
-                        date = message.created_at.strftime('%y.%m.%d | %H:%M')
+                        date = f'<t:{str(int(datetime.timestamp(message.created_at)))}:f>'
                         await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) {message.content}')
                     else:
-                        date = message.created_at.strftime('%y.%m.%d | %H:%M')
+                        date = f'<t:{str(int(datetime.timestamp(message.created_at)))}:f>'
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
                 
                 
