@@ -129,7 +129,7 @@ async def on_message_delete(message):
                 async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
                     if entry.target == message.author:
                         deleter = entry.user
-                        date = message.created_at.timestamp
+                        date = str(int(message.created_at.timestamp))
                         await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) {message.content}')
                     else:
                         date = message.created_at.timestamp
