@@ -116,7 +116,7 @@ async def on_message(message):
 
 @client.event
 async def on_message_delete(message):
-    if message.guild_id == 1079023618450792498:
+    if message.guild.id == 1079023618450792498:
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             modLog = client.get_channel(channels['mod-log'])
