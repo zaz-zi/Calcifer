@@ -164,7 +164,7 @@ class EnglishMenu(discord.ui.View):
                     if otherRole in interaction.user.roles:
                         alreadyHas = True
                         await interaction.user.remove_roles(otherRole)
-                        await interaction.response.send_message('Role granted. To complete the verification process, please select a Russian role.', ephemeral=True, delete_after=20)
+                        await interaction.response.send_message('Role changed', ephemeral=True, delete_after=20)
                 verified = False
                 for item in ruRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
@@ -174,7 +174,7 @@ class EnglishMenu(discord.ui.View):
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
-                    await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
+                    await interaction.response.send_message('Role granted. To complete the verification process, please select a Russian role.', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
@@ -213,7 +213,7 @@ class RussianMenu(discord.ui.View):
                     if otherRole in interaction.user.roles:
                         alreadyHas = True
                         await interaction.user.remove_roles(otherRole)
-                        await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
+                        await interaction.response.send_message('Role changed', ephemeral=True, delete_after=20)
                 verified = False
                 for item in enRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
@@ -223,7 +223,7 @@ class RussianMenu(discord.ui.View):
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
-                    await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
+                    await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
@@ -257,7 +257,7 @@ class RussianMenu(discord.ui.View):
                     if otherRole in interaction.user.roles:
                         alreadyHas = True
                         await interaction.user.remove_roles(otherRole)
-                        await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
+                        await interaction.response.send_message('Role changed', ephemeral=True, delete_after=20)
                 verified = False
                 for item in enRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
@@ -267,7 +267,7 @@ class RussianMenu(discord.ui.View):
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
-                    await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
+                    await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
@@ -301,7 +301,7 @@ class RussianMenu(discord.ui.View):
                     if otherRole in interaction.user.roles:
                         alreadyHas = True
                         await interaction.user.remove_roles(otherRole)
-                        await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
+                        await interaction.response.send_message('Role changed', ephemeral=True, delete_after=20)
                 verified = False
                 for item in enRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
@@ -310,7 +310,7 @@ class RussianMenu(discord.ui.View):
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
-                    await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
+                    await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
@@ -344,7 +344,7 @@ class RussianMenu(discord.ui.View):
                     if otherRole in interaction.user.roles:
                         alreadyHas = True
                         await interaction.user.remove_roles(otherRole)
-                        await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
+                        await interaction.response.send_message('Role changed', ephemeral=True, delete_after=20)
                 verified = False
                 for item in enRoles:
                     if interaction.user.guild.get_role(item) in interaction.user.roles:
@@ -353,7 +353,7 @@ class RussianMenu(discord.ui.View):
                             verified = True
                 await interaction.user.add_roles(role)
                 if verified == False and alreadyHas == False:
-                    await interaction.response.send_message('Role granted', ephemeral=True, delete_after=20)
+                    await interaction.response.send_message('Role granted. To complete the verification process, please select an English role.', ephemeral=True, delete_after=20)
                 elif verified == True and alreadyHas == False:
                     with io.open('channel_ids.json', encoding='utf-8') as file:
                         channels = json.load(file)
