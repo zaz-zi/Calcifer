@@ -131,7 +131,7 @@ async def on_message_delete(message):
                     #     deleter = entry.user
                     #     await modLog.send(f'{deleter.name} deleted a message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
                     # else:
-                        await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n{message.created_at}: **{message.content}**')
+                await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n**{message.content}**')
                 
                 
 
