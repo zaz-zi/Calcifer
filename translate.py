@@ -20,7 +20,7 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
         embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
     except:
-        embed = discord.Embed(type="rich", title='Error', description='Something went wrong. Please make sure you have provided the correct language code. You can use the /help_translate command to view the full list of available language codes.', color=0x19264c)
+        embed = discord.Embed(type="rich", title='Error', description='Something went wrong. Please make sure you have provided the correct language code. You can use the **/help_translate** command to view the full list of available language codes.', color=0x19264c)
         embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
         await interaction.response.send_message(file=file, embed=embed)
