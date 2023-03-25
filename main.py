@@ -69,6 +69,7 @@ async def on_member_join(member):
 
 @client.event
 async def on_message(message):
+    await client.process_commands(message)
     with io.open('channel_ids.json', encoding='utf-8') as file:
         channels = json.load(file)
         proofreading = client.get_channel(channels['proofreading'])
@@ -134,8 +135,9 @@ async def on_message_delete(message):
                     else:
                         date = message.created_at.strftime('%y.%m.%d | %H:%M')
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
-                
-@client.command()
+
+
+@client.hybrid_command(name='members', description='Show the current amount of server members')
 async def members(ctx):
     total = ctx.guild.member_count
     members = len([m for m in ctx.guild.members if not m.bot])
