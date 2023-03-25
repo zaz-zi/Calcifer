@@ -135,7 +135,12 @@ async def on_message_delete(message):
                         date = message.created_at.strftime('%y.%m.%d | %H:%M')
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
                 
-                
+@client.command()
+async def members(ctx):
+    total = ctx.guild.member_count
+    members = len([m for m in ctx.guild.members if not m.bot])
+    bots = total - members
+    await ctx.send(f'ms: {members}\nbots: {bots}\ntotal: {total}')
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, target_lang: str, input: str, source_lang: str = 'auto'):
