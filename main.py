@@ -137,7 +137,7 @@ async def on_message_delete(message):
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
 
 
-@client.hybrid_command(name='members', description='Show the current amount of server members')
+@client.hybrid_command(name='members', description='Display the current amount of server members')
 async def members(ctx):
     total = ctx.guild.member_count
     members = len([m for m in ctx.guild.members if not m.bot])
