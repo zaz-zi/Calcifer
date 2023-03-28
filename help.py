@@ -14,7 +14,7 @@ async def can_do(interaction: discord.Interaction):
             enText = jsonHelp['can_do'][0]
             ruText = jsonHelp['can_do'][1]
             noteEn = jsonHelp['can_do'][2]
-            noteRu = jsonHelp['can_do'][3]
+            noteRu = jsonHelp['can_do'][3] 
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             botInfo = interaction.guild.get_channel(channels['bot-info'])
