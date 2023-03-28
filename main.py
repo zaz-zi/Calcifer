@@ -120,7 +120,7 @@ async def on_message_delete(message):
     if message.guild.id == 1079023618450792498:
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
-            modLog = client.get_channel(channels['mod-log']) 
+            modLog = client.get_channel(channels['mod-log'])
         role = discord.utils.find(
             lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
         botRole = discord.utils.find(
@@ -130,10 +130,10 @@ async def on_message_delete(message):
                 async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
                     if entry.target == message.author:
                         deleter = entry.user
-                        date = f'<t:{str(int(message.created_at.timestamp()))}:d><t:{str(int(message.created_at.timestamp()))}:t>'
+                        date = message.created_at.strftime('%y.%m.%d | %H:%M')
                         await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) {message.content}')
                     else:
-                        date = f'<t:{str(int(message.created_at.timestamp()))}:d><t:{str(int(message.created_at.timestamp()))}:t>'
+                        date = message.created_at.strftime('%y.%m.%d | %H:%M')
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
 
 
