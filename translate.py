@@ -7,7 +7,7 @@ translator = deepl.Translator("e92f1b3d-8489-6817-b45d-d2ea86226a43:fx")
 
 async def translate(interaction: discord.Interaction, target_lang: str, phrase: str, source_lang: str = 'auto'):
     # try:
-        if source_lang == 'auto':
+        if source_lang == 'auto': 
             if source_lang == 'en':
                 source_lang = 'en-us'
             result = translator.translate_text(phrase, target_lang=target_lang)
