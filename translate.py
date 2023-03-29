@@ -10,10 +10,10 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
         target_lang = target_lang.lower()
         source_lang = source_lang.lower()
         for index, item in langs:
-            if langs[index].lower() == target_lang:
-                target_lang = item
-            if langs[index].lower() == source_lang:
-                source_lang = item
+            if item.lower() == target_lang:
+                target_lang = index
+            if item.lower() == source_lang:
+                source_lang = index
         if target_lang == 'en':
             target_lang = 'en-us'
         if source_lang == 'auto': 
