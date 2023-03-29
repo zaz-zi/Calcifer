@@ -139,10 +139,15 @@ async def on_message_delete(message):
 
 @client.hybrid_command(name='members', description='Display the current amount of server members')
 async def members(ctx):
-    total = ctx.guild.member_count
-    members = len([m for m in ctx.guild.members if not m.bot])
-    bots = total - members
-    await ctx.send(f'ms: **{members}**\nbots: **{bots}**\ntotal: **{total}**')
+    role = discord.utils.find(
+        lambda r: r.name == 'Moderator', ctx.guild.roles)
+    if role not in ctx.author.roles:
+        await ctx.send('You do not have permission to use this command!', ephemeral=True)
+    else:
+        total = ctx.guild.member_count
+        members = len([m for m in ctx.guild.members if not m.bot])
+        bots = total - members
+        await ctx.send(f'ms: **{members}**\nbots: **{bots}**\ntotal: **{total}**')
 
 
 @client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
