@@ -280,4 +280,4 @@ async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
 client.run(
-    'MTA4MTI4NTc3NzU2MjAxMzgxNw.G7_Tsa.5EDsrPsGyfGBKTdp4QrexWcdNlBPDSeuT-xeWY')
+    'MTA4MTI4NTc3NzU2MjAxMzgxNw.G7_Tsa.5EDsrPsGyfGBKTdp4QrexWcdNlBPDSeuT-xeWY') 
