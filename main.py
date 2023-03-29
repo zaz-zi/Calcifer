@@ -15,16 +15,14 @@ import asyncio
 from resources import resources
 from proofreading import proofreading
 
-intents = discord.Intents.default()
-intents.message_content = True
-intents.members = True
-client = commands.Bot(intents=intents, command_prefix=commands.when_mentioned_or('c_'))
+intents = discord.Intents.all()
+client = commands.Bot(intents=intents, command_prefix='c_')
 
 
 class PersistentViewBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.all()
-        super().__init__(command_prefix=commands.when_mentioned_or('c_'), intents=intents)
+        super().__init__(command_prefix='c_', intents=intents)
 
     async def setup_hook(self) -> None:
         self.add_view(roles.EnglishMenu())
@@ -38,7 +36,6 @@ client = PersistentViewBot()
 @client.event
 async def on_ready():
     await client.tree.sync()
-    await client.tree.sync(guild=discord.Object(id=1079023618450792498))
     print('Bot online!')
 
 
@@ -130,26 +127,27 @@ async def on_message_delete(message):
                 async for entry in message.guild.audit_logs(limit=1, action=discord.AuditLogAction.message_delete):
                     if entry.target == message.author:
                         deleter = entry.user
-                        date = f'<t:{str(int(message.created_at.timestamp()))}:d><t:{str(int(message.created_at.timestamp()))}:t>'
-                        await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) {message.content}') 
+                        date = message.created_at.strftime('%y.%m.%d | %H:%M')
+                        await modLog.send(f'**{deleter.name}** deleted a message by **{message.author.name}** in {message.channel.mention}:\n({date}) {message.content}')
                     else:
-                        date = f'<t:{str(int(message.created_at.timestamp()))}:d><t:{str(int(message.created_at.timestamp()))}:t>'
+                        date = message.created_at.strftime('%y.%m.%d | %H:%M')
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
+                
 
-
-@client.hybrid_command(name='members', description='Display the current amount of server members')
+@client.hybrid_command(name='members', description='Show the current number of server members')
 async def members(ctx):
     total = ctx.guild.member_count
     members = len([m for m in ctx.guild.members if not m.bot])
     bots = total - members
-    await ctx.send(f'ms: **{members}**\nbots: **{bots}**\ntotal: **{total}**')
+    await ctx.send(f'ms: {members}\nbots: {bots}\ntotal: {total}')
 
-@client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=1079023618450792498))
+
+@client.tree.command(name='translate', description='Translate a piece of text')
 async def self(interaction: discord.Interaction, target_lang: str, input: str, source_lang: str = 'auto'):
     await translate.translate(interaction, target_lang, input, source_lang)
 
 
-@client.tree.command(name='rules', description='Post the server rules. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='rules', description='Post the server rules. Moderator only.')
 async def self(interaction: discord.Interaction):
     await rules.rules(interaction)
 
@@ -159,7 +157,7 @@ async def self(interaction: discord.Interaction, rule_number: str, lang: str):
     await rules.rule(interaction, rule_number=rule_number, lang=lang)
 
 
-@client.tree.command(name='translate_help', description='Display the full list of languages you can use via the "/translate" command', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='help_translate', description='Display the full list of languages you can use via the "/translate" command', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await translate.help_translate(interaction)
 
@@ -209,17 +207,17 @@ async def self(interaction: discord.Interaction, input: str):
     await dictionaries.urban(interaction, input)
 
 
-@client.tree.command(name='roles', description='Post role selecting menus. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='roles', description='Post role selecting menus. Moderator only.')
 async def self(interaction: discord.Interaction):
     await roles.menuLangs(interaction)
 
 
-@client.tree.command(name='mute', description='Mute a member. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='mute', description='Mute a member. Moderator only.')
 async def self(interaction: discord.Interaction, member: discord.Member, duration: int, time_unit: str = 'm', reason: str = 'blank'):
     await admin.mute(interaction, member, duration, time_unit, reason)
 
 
-@client.tree.command(name='unmute', description='Unmute a member. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='unmute', description='Unmute a member. Moderator only.')
 async def self(interaction: discord.Interaction, member: discord.Member):
     await admin.unmute(interaction, member)
 
@@ -229,32 +227,32 @@ async def self(interaction: discord.Interaction):
     await admin.mute_check(interaction)
 
 
-@client.tree.command(name='ban', description='Ban a member. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='ban', description='Ban a member. Moderator only.')
 async def self(interaction: discord.Interaction, member: discord.Member, reason: str = 'blank'):
     await admin.ban(interaction, member, reason)
 
 
-@client.tree.command(name='unban', description='Unban a member. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='unban', description='Unban a member. Moderator only.')
 async def self(interaction: discord.Interaction, member: discord.User):
     await admin.unban(interaction, member)
 
 
-@client.tree.command(name='kick', description='Kick a member. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='kick', description='Kick a member. Moderator only.')
 async def self(interaction: discord.Interaction, user: discord.User, reason: str = 'blank'):
     await admin.kick(interaction, user, reason)
 
 
-@client.tree.command(name='can_do', description='Post the full list of Calcifer\'s available commands. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='can_do', description='Post the full list of Calcifer\'s available commands. Moderator only.')
 async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
 
-@client.tree.command(name='help', description='Get info on Calcifer\'s available commands', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='help', description='Get info on Calcifer\'s available commands')
 async def self(interaction: discord.Interaction):
     await help.help(interaction)
 
 
-@client.tree.command(name='remove', description='Remove up to 100 recent messages. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='remove', description='Remove up to 100 recent messages. Moderator only.')
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
 
@@ -278,4 +276,5 @@ async def self(interaction: discord.Interaction):
 async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
-client.run('MTA4MTI4NTc3NzU2MjAxMzgxNw.GqCV_E.V4cvIG-YxYlk4XZTf8IbUfAOjUvbT_qAbrxo2M')
+client.run(
+    'MTA4ODEyMjQ0MzA3NzUxNzM5Mg.GdJbGZ.taTGuy_1xP9YYVWW6Yx6BYrQ3c-E6RtGU6pWBk')

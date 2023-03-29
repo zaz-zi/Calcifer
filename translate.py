@@ -8,6 +8,8 @@ translator = deepl.Translator("e92f1b3d-8489-6817-b45d-d2ea86226a43:fx")
 async def translate(interaction: discord.Interaction, target_lang: str, phrase: str, source_lang: str = 'auto'):
     try:
         if source_lang == 'auto':
+            if source_lang == 'en':
+                source_lang = 'en-us'
             result = translator.translate_text(phrase, target_lang=target_lang)
         else:
             result = result = translator.translate_text(phrase, target_lang=target_lang, source_lang=source_lang)
@@ -16,7 +18,9 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
             langs = jsonHelp['help_translate']['langs']
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
         source = result.detected_source_lang
-        embed = discord.Embed(type="rich", description=f'Translated from {langs[source.lower()]}:\n**{phrase}**\n\nTranslated to {langs[target_lang]}:\n**{result}**', color=0x19264c)
+        if source.lower() == 'en':
+            source = 'en-us'
+        embed = discord.Embed(type="rich", description=f'Translated from {langs[source]}:\n**{phrase}**\n\nTranslated to {langs[target_lang]}:\n**{result}**', color=0x19264c)
         embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
         await interaction.response.send_message(file=file, embed=embed)
     except:
