@@ -7,6 +7,11 @@ translator = deepl.Translator("e92f1b3d-8489-6817-b45d-d2ea86226a43:fx")
 
 async def translate(interaction: discord.Interaction, target_lang: str, phrase: str, source_lang: str = 'auto'):
     try:
+        for item in langs:
+            if langs[item].lower() == target_lang.lower():
+                target_lang = item
+            if langs[item].lower() == source_lang.lower():
+                source_lang = item
         if source_lang == 'auto': 
             if source_lang == 'en':
                 source_lang = 'en-us'
@@ -16,11 +21,8 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
         with io.open('help.json', encoding='utf-8') as file:
             jsonHelp = json.load(file)
             langs = jsonHelp['help_translate']['langs']
-        for item in langs:
-            if langs[item].lower() == target_lang.lower():
-                target_lang = item
-            if langs[item].lower() == source_lang.lower():
-                source_lang = item
+        
+            
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
         source = result.detected_source_lang.lower()
         if source.lower() == 'en': 
