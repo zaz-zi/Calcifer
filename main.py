@@ -277,4 +277,4 @@ async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
 client.run(
-    'MTA4ODEyMjQ0MzA3NzUxNzM5Mg.GdJbGZ.taTGuy_1xP9YYVWW6Yx6BYrQ3c-E6RtGU6pWBk')
+    'MTA4MTI4NTc3NzU2MjAxMzgxNw.GWF-R0.OoMx7UGpV6vVIGKLyOPxpXLRf-BEYH4KcG9hAc')
