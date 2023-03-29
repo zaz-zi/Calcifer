@@ -137,7 +137,7 @@ async def on_message_delete(message):
                         await modLog.send(f'Deleted message by **{message.author.name}** in {message.channel.mention}:\n({date}) **{message.content}**')
                 
 
-@client.hybrid_command(name='members', description='Display the current amount of server members')
+@client.hybrid_command(name='members', description='Display the current amount of server members. Moderator only.')
 async def members(ctx):
     role = discord.utils.find(
         lambda r: r.name == 'Moderator', ctx.guild.roles)
