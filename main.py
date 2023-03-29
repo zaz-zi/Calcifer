@@ -225,7 +225,7 @@ async def self(interaction: discord.Interaction, member: discord.Member):
     await admin.unmute(interaction, member)
 
 
-@client.tree.command(name='mute_check', description='Refresh Calcifer\'s mute memory. Moderator only.', guild=discord.Object(id=1079023618450792498), guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='mute_check', description='Refresh Calcifer\'s mute memory. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await admin.mute_check(interaction)
 
@@ -280,4 +280,4 @@ async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
 client.run(
-    'MTA4MTI4NTc3NzU2MjAxMzgxNw.GWF-R0.OoMx7UGpV6vVIGKLyOPxpXLRf-BEYH4KcG9hAc')
+    'MTA4MTI4NTc3NzU2MjAxMzgxNw.G7_Tsa.5EDsrPsGyfGBKTdp4QrexWcdNlBPDSeuT-xeWY')
