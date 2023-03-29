@@ -12,11 +12,11 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
             langs = jsonHelp['help_translate']['langs']
         target_lang = target_lang.lower()
         source_lang = source_lang.lower()
-        for index, item in langs:
-            if item.lower() == target_lang:
-                target_lang = index
-            if item.lower() == source_lang:
-                source_lang = index
+        for item in langs:
+            if langs[item].lower() == target_lang:
+                target_lang = item
+            if langs[item].lower() == source_lang:
+                source_lang = item
         if target_lang == 'en':
             target_lang = 'en-us'
         if source_lang == 'auto': 
