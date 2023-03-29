@@ -108,7 +108,7 @@ def generateOutput(inputWord: str, speechPart: str) -> str:
             'Article', 'Determiner', 'Numeral', 'Noun', 'Pronoun', 'Verb', 'Adjective',
             'Adverb', 'Preposition', 'Postposition', 'Circumposition', 'Ambiposition',
             'Conjunction', 'Interjection', 'Exclamation', 'Particle', 'Clause', 'Proper noun',
-            'Participle', 'Phrase', 'Letter'
+            'Participle', 'Phrase', 'Letter', 'Contraction'
             ]
     else:
         speechParts = [speechPart]  # break after speechPart is found increases performance
