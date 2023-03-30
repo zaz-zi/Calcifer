@@ -13,21 +13,22 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
         target_lang = target_lang.lower()
         source_lang = source_lang.lower()
         for item in langs.keys():
-            if langs[item].lower() == target_lang:
-                target_lang = langs[item]
-            if langs[item].lower() == source_lang:
-                source_lang = langs[item]
+            if target_lang in langs[item].lower():
+                target_lang = item
+            if source_lang in langs[item].lower():
+                source_lang = item
         if target_lang == 'en':
             target_lang = 'en-us'
-        if source_lang == 'auto': 
+        if source_lang == 'auto':
             if source_lang == 'en':
                 source_lang = 'en-us'
             result = translator.translate_text(phrase, target_lang=target_lang)
         else:
-            result = result = translator.translate_text(phrase, target_lang=target_lang, source_lang=source_lang)
+            result = result = translator.translate_text(
+                    phrase, target_lang=target_lang, source_lang=source_lang)
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
         source = result.detected_source_lang.lower()
-        if source == 'en': 
+        if source == 'en':
             source = 'en-us'
         embed = discord.Embed(type="rich", description=f'Translated from {langs[source]}:\n**{phrase}**\n\nTranslated to {langs[target_lang]}:\n**{result}**', color=0x19264c)
         embed.set_author(name='DeepL', icon_url='attachment://deepl_icon.png')
