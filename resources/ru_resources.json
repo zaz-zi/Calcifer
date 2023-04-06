@@ -6,7 +6,7 @@
         "Online Dictionaries",
         "Translation Tools",
         "Live Language Use Lookup",
-        "Corpora"
+        "Miscellaneous"
     ],
 
     "categories": {
@@ -65,14 +65,24 @@
                 "title": "Filmot",
                 "desc": "is a good alternative to YouGlish that also allows users to search for and listen to authentic language usage in various contexts taken from YouTube snippets. It provides a wider range of entries to choose from and allows users to apply filters such as language and country to narrow down their search. With its extensive database, Filmot is a useful resource for learners looking to improve their listening and pronunciation skills.\n\n_Note: to improve the accuracy of your search for specific phrases and sentences, make sure to enclose the input in quotation marks._",
                 "url": "https://filmot.com/"
+            },
+            "forvo": {
+                "title": "Forvo",
+                "desc": "is a user-driven online pronunciation dictionary that offers audio recordings of native speakers pronouncing words and phrases in various languages, including Russian and English. With its extensive database and easy-to-use interface, Forvo is an invaluable resource for learners looking to improve their pronunciation and listening skills, as well as gain insights into the nuances of spoken language in different regions and accents.",
+                "url": "https://forvo.com/"
             }
         },
 
-        "corpora": {
+        "miscellaneous": {
             "ngram": {
                 "title": "Google Books Ngram Viewer",
                 "desc": "is a web-based tool that allows users to search and analyze the frequency of words and phrases in millions of books published over the past several centuries in multiple languages, including Russian and English. Users can enter a query and see how its usage has changed over time, as well as compare it to other queries. The results are displayed in a graph that shows the frequency of the query over time.",
                 "url": "https://books.google.com/ngrams/"
+            },
+            "anki": {
+                "title": "Anki",
+                "desc": "is a powerful, customizable flashcard application designed to help language learners, including those studying Russian and English, improve their vocabulary and memorization skills. With its spaced repetition system, Anki ensures that users review content at optimal intervals for long-term retention. Users can create their own flashcard decks or download pre-made decks created by the community, such as [The Ultimate Guide to Russian – The Most Used 5000 Words](https://ankiweb.net/shared/info/1147549038), a highly recommended deck focusing on the most frequently used words in Russian, which also includes speaking and listening modules. This makes Anki a versatile and efficient tool for learners of all levels.",
+                "url": "https://apps.ankiweb.net/"
             }
         }
     }
