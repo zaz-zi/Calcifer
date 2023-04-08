@@ -46,5 +46,5 @@ async def resources(interaction: discord.Interaction):
             nav_desc += f'[{nav_items[i]}](https://discord.com/channels/{interaction.guild_id}/{interaction.channel_id}/{id})\n'
 
         embedNav = discord.Embed(color=0xffa400, type='rich', description=nav_desc)
-        embedNav.set_footer(text="Hit 'Esc' to get back down.")
+        embedNav.set_footer(text="Hit 'Esc' to get back down")
         await interaction.channel.send(embed=embedNav)
