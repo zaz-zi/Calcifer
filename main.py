@@ -285,5 +285,10 @@ async def self(interaction: discord.Interaction):
 async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
+
+@client.tree.command(name='create_post', description='Generate a post in the media channel. Moderator only.', guild=discord.Object(id=1079023618450792498))
+async def self(interaction: discord.Interaction, name: str, description: str):
+    await help.createPost(interaction, name, description)
+
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.G7_Tsa.5EDsrPsGyfGBKTdp4QrexWcdNlBPDSeuT-xeWY') 

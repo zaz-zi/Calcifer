@@ -73,3 +73,15 @@ async def nigger(interaction: discord.Interaction):
         await post.thread.send(embed=embedEn)
         await post.thread.send(embed=embedRu)
 
+
+async def createPost(interaction: discord.Interaction,  name: str, description: str):
+    role = discord.utils.find(
+        lambda r: r.name == 'Moderator', interaction.guild.roles)
+    if role not in interaction.user.roles:
+        await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
+    else:
+        await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=20)
+        with io.open('channel_ids.json', encoding='utf-8') as file:
+            channels = json.load(file)
+            media = interaction.guild.get_channel(channels['media'])
+        await media.create_thread(name=name, content=f'# {description}\n')
