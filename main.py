@@ -292,8 +292,8 @@ async def self(interaction: discord.Interaction, name: str, description: str):
 
 
 @client.tree.command(name='post_default', description='Post the defaul set of posts in the media channel. Moderator only.', guild=discord.Object(id=1079023618450792498))
-async def self(interaction: discord.Interaction, name: str, description: str):
-    await help.defaultPost(interaction, name, description)
+async def self(interaction: discord.Interaction):
+    await help.defaultPost(interaction)
 
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.G7_Tsa.5EDsrPsGyfGBKTdp4QrexWcdNlBPDSeuT-xeWY') 

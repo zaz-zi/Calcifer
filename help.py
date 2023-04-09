@@ -87,7 +87,7 @@ async def createPost(interaction: discord.Interaction,  name: str, description: 
         await media.create_thread(name=name, content=f'# {description}\n')
 
 
-async def defaultPost(interaction: discord.Interaction,  name: str, description: str):
+async def defaultPost(interaction: discord.Interaction):
     role = discord.utils.find(
         lambda r: r.name == 'Moderator', interaction.guild.roles)
     if role not in interaction.user.roles:
@@ -97,9 +97,9 @@ async def defaultPost(interaction: discord.Interaction,  name: str, description:
         with io.open('channel_ids.json', encoding='utf-8') as file:
             channels = json.load(file)
             media = interaction.guild.get_channel(channels['media'])
-        await media.create_thread(name='🪁Hobbies', content='Share and discuss your favorite hobbies, from movies, TV shows, books, and video games, to sports, personal artwork, coding projects, and even your beloved plants')
-        await media.create_thread(name='🤡Memes', content='Unleash your creativity and humor with memes and funny content')
-        await media.create_thread(name='🎶Music', content='Discover new tunes and discuss your favorite tracks, albums, or artists')
-        await media.create_thread(name='📷Travel & Photography', content='Showcase your adventures and stunning shots from around the world')
-        await media.create_thread(name='🐶Pets', content='Share your adorable pets, their antics, and your love for your furry, feathery, or scaly companions')
-        await media.create_thread(name='🍝Food', content='Share mouthwatering dishes you\'ve cooked, discover new recipes, and discuss all things culinary')
+        await media.create_thread(name='🍝 Food', content='# Share mouthwatering dishes you\'ve cooked, discover new recipes, and discuss all things culinary')    
+        await media.create_thread(name='🐶 Pets', content='# Share your adorable pets, their antics, and your love for your furry, feathery, or scaly companions')
+        await media.create_thread(name='📷 Travel & Photography', content='# Showcase your adventures and stunning shots from around the world')
+        await media.create_thread(name='🎶 Music', content='# Discover new tunes and discuss your favorite tracks, albums, or artists')
+        await media.create_thread(name='🤡 Memes', content='# Unleash your creativity and humor with memes and funny content')
+        await media.create_thread(name='🪁 Hobbies', content='# Share and discuss your favorite hobbies, from movies, TV shows, books, and video games, to sports, personal artwork, coding projects, and even your beloved plants')
