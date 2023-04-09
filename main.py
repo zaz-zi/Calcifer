@@ -39,7 +39,7 @@ client = PersistentViewBot()
 async def on_ready():
     await client.tree.sync()
     await client.tree.sync(guild=discord.Object(id=1079023618450792498))
-    await client.get_channel(1079113375918850059).send('Bot online!')
+    await client.get_channel(1079113375918850059).send('я ебался в сраку')
     print('Bot online!')
 
 
@@ -289,6 +289,11 @@ async def self(interaction: discord.Interaction):
 @client.tree.command(name='create_post', description='Generate a post in the media channel. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction, name: str, description: str):
     await help.createPost(interaction, name, description)
+
+
+@client.tree.command(name='post_default', description='Post the defaul set of posts in the media channel. Moderator only.', guild=discord.Object(id=1079023618450792498))
+async def self(interaction: discord.Interaction, name: str, description: str):
+    await help.defaultPost(interaction, name, description)
 
 client.run(
     'MTA4MTI4NTc3NzU2MjAxMzgxNw.G7_Tsa.5EDsrPsGyfGBKTdp4QrexWcdNlBPDSeuT-xeWY') 
