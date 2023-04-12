@@ -291,7 +291,7 @@ async def self(interaction: discord.Interaction, name: str, description: str):
     await help.createPost(interaction, name, description)
 
 
-@client.tree.command(name='post_default', description='Post the defaul set of posts in the media channel. Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='create_post_set', description='Generate the default set of posts in the media channel. Moderator only.', guild=discord.Object(id=1079023618450792498))
 async def self(interaction: discord.Interaction):
     await help.defaultPost(interaction)
 
