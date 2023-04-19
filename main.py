@@ -124,7 +124,7 @@ async def on_message_delete(message):
             channels = json.load(file)
             modLog = client.get_channel(channels['mod-log'])
         role = discord.utils.find(
-            lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles)
+            lambda r: r.name == 'Moderator', client.get_guild(1079023618450792498).roles) 
         botRole = discord.utils.find(
             lambda r: r.name == 'Bots', client.get_guild(1079023618450792498).roles)
         if message.author.id != 1081285777562013817:
