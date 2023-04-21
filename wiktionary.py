@@ -237,4 +237,5 @@ async def wiktionary(interaction: discord.Interaction, inpWord: str, speech_part
         file = discord.File('wiktionary_icon.png', filename="wiktionary_icon.png")
         embed = discord.Embed(type='rich', title='Error', description=output, color=0xeed6ae)
         embed.set_author(name='Wiktionary', icon_url='attachment://wiktionary_icon.png')
+        embed.set_footer(text='Please keep in mind that the input data is case-sensitive')
         await interaction.response.send_message(file=file, embed=embed)
