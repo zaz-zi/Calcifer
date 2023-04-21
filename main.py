@@ -39,7 +39,7 @@ client = PersistentViewBot()
 @client.event
 async def on_ready():
     await client.tree.sync()
-    await client.tree.sync(guild=pyre_guild_id)
+    await client.tree.sync(guild=discord.Object(id=pyre_guild_id))
     await client.get_channel(1079113375918850059).send('Let\'s get a fire going!')
     print('Bot online!')
 
