@@ -152,22 +152,22 @@ async def members(ctx):
         await ctx.send(f'ms: **{members}**\nbots: **{bots}**\ntotal: **{total}**')
 
 
-@client.tree.command(name='translate', description='Translate a piece of text', guild=pyre_guild_id)
+@client.tree.command(name='translate', description='Translate a piece of text', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, target_lang: str, input: str, source_lang: str = 'auto'):
     await translate.translate(interaction, target_lang, input, source_lang)
 
 
-@client.tree.command(name='rules', description='Post the server rules. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='rules', description='Post the server rules. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await rules.rules(interaction)
 
 
-@client.tree.command(name='rule', description='Post a specific rule. Please specify the rule number and language (ru/en). Moderator only.', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='rule', description='Post a specific rule. Please specify the rule number and language (ru/en). Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, rule_number: str, lang: str):
     await rules.rule(interaction, rule_number=rule_number, lang=lang)
 
 
-@client.tree.command(name='translate_help', description='Display the full list of languages you can use via the "/translate" command', guild=discord.Object(id=1079023618450792498))
+@client.tree.command(name='translate_help', description='Display the full list of languages you can use via the "/translate" command', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await translate.help_translate(interaction)
 
@@ -217,27 +217,27 @@ async def self(interaction: discord.Interaction, input: str):
     await dictionaries.urban(interaction, input)
 
 
-@client.tree.command(name='roles', description='Post role selecting menus. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='roles', description='Post role selecting menus. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await roles.menuLangs(interaction)
 
 
-@client.tree.command(name='mute', description='Mute a member. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='mute', description='Mute a member. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, member: discord.Member, duration: int, time_unit: str = 'm', reason: str = 'blank'):
     await admin.mute(interaction, member, duration, time_unit, reason)
 
 
-@client.tree.command(name='unmute', description='Unmute a member. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='unmute', description='Unmute a member. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, member: discord.Member):
     await admin.unmute(interaction, member)
 
 
-@client.tree.command(name='mute_check', description='Refresh Calcifer\'s mute memory. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='mute_check', description='Refresh Calcifer\'s mute memory. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await admin.mute_check(interaction)
 
 
-@client.tree.command(name='ban', description='Ban a member. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='ban', description='Ban a member. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, member: discord.Member, reason: str = 'blank'):
     await admin.ban(interaction, member, reason)
 
@@ -252,47 +252,47 @@ async def self(interaction: discord.Interaction, user: discord.User, reason: str
     await admin.kick(interaction, user, reason)
 
 
-@client.tree.command(name='can_do', description='Post the full list of Calcifer\'s available commands. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='can_do', description='Post the full list of Calcifer\'s available commands. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await help.can_do(interaction)
 
 
-@client.tree.command(name='help', description='Get info on Calcifer\'s available commands', guild=pyre_guild_id)
+@client.tree.command(name='help', description='Get info on Calcifer\'s available commands', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await help.help(interaction)
 
 
-@client.tree.command(name='remove', description='Remove up to 100 recent messages. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='remove', description='Remove up to 100 recent messages. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, amount: int):
     await admin.clear(interaction, amount)
 
 
-@client.tree.command(name='ru_resources', description='Post Russian learning resources. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='ru_resources', description='Post Russian learning resources. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await resources.resources(interaction)
 
 
-@client.tree.command(name='resolved', description='Lock and tag the current post as resolved', guild=pyre_guild_id)
+@client.tree.command(name='resolved', description='Lock and tag the current post as resolved', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await admin.resolve(interaction)
 
 
-@client.tree.command(name='proofreading', description='Post guidelines for the proofreading channel. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='proofreading', description='Post guidelines for the proofreading channel. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await proofreading.proofreading(interaction)
 
 
-@client.tree.command(name='language_questions', description='Generate a post with channel guidelines. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='language_questions', description='Generate a post with channel guidelines. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await help.nigger(interaction)
 
 
-@client.tree.command(name='create_post', description='Generate a post in the media channel. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='create_post', description='Generate a post in the media channel. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction, name: str, description: str):
     await help.createPost(interaction, name, description)
 
 
-@client.tree.command(name='create_post_set', description='Generate the default set of posts in the media channel. Moderator only.', guild=pyre_guild_id)
+@client.tree.command(name='create_post_set', description='Generate the default set of posts in the media channel. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await help.defaultPost(interaction)
 
