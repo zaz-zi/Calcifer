@@ -46,6 +46,7 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
             await interaction.channel.send(source_lang)
             if source_lang.lower() == 'en-us' or source_lang.lower() == 'english (american)':
                 source_lang = 'us'
+            await interaction.channel.send(source_lang)
             result = translator.translate_text(phrase, target_lang=target_lang, source_lang=source_lang)
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
         source = result.detected_source_lang.lower() 
