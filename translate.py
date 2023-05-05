@@ -48,6 +48,8 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
                 source_lang = 'en'
             await interaction.channel.send(source_lang)
             result = translator.translate_text(phrase, target_lang=target_lang, source_lang=source_lang)
+            if source_lang == 'en':
+                source_lang = 'en-us'
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
         source = result.detected_source_lang.lower() 
         embed = discord.Embed(type="rich", description=f'Translated from {langs[source]}:\n**{phrase}**\n\nTranslated to {langs[target_lang]}:\n**{result}**', color=0x19264c)
