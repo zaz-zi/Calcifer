@@ -39,14 +39,12 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
                 target_lang = item
             if source_lang == langs[item].lower():
                 source_lang = item
-                if source_lang == 'en-us':
-                    source_lang = 'en'
         
         if source_lang == 'auto':
-            if source_lang == 'en':
-                source_lang = 'en-us'
             result = translator.translate_text(phrase, target_lang=target_lang)
         else:
+            if source_lang.lower() == 'en-us':
+                source_lang = 'us'
             result = result = translator.translate_text(
                     phrase, target_lang=target_lang, source_lang=source_lang)
         file = discord.File('deepl_icon.png', filename="deepl_icon.png")
