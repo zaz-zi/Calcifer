@@ -43,6 +43,7 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
         if source_lang == 'auto':
             result = translator.translate_text(phrase, target_lang=target_lang)
         else:
+            await interaction.channel.send(source_lang)
             if source_lang.lower() == 'en-us' or source_lang.lower() == 'english (american)':
                 source_lang = 'us'
             result = translator.translate_text(phrase, target_lang=target_lang, source_lang=source_lang)
