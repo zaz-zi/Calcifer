@@ -22,8 +22,6 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
             source_lang += ' (brazilian)'
         if target_lang == 'en':
             target_lang = 'en-us'
-        if source_lang == 'en':
-            source_lang = 'en-us'
         if target_lang == 'pt':
             target_lang = 'pt-br'
         if source_lang == 'pt':
@@ -41,6 +39,8 @@ async def translate(interaction: discord.Interaction, target_lang: str, phrase: 
                 target_lang = item
             if source_lang == langs[item].lower():
                 source_lang = item
+                if source_lang == 'en-us':
+                    source_lang = 'en'
         
         if source_lang == 'auto':
             if source_lang == 'en':
