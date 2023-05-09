@@ -14,11 +14,11 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
             mutedRole = interaction.guild.get_role(1081677484002648104)
             units = {"s": "seconds", "m": "minutes", "h": "hours", "d": "days"}
             durationDisplayed = duration
-            if time_unit == 'm' or time_unit == 'minutes':
+            if time_unit == 'm' or time_unit == 'minutes' or time_unit == 'minute':
                 duration *= 60
-            elif time_unit == 'h' or time_unit == 'hours':
+            elif time_unit == 'h' or time_unit == 'hours' or time_unit == 'hour':
                 duration *= 60*60
-            elif time_unit == 'd' or time_unit == 'days':
+            elif time_unit == 'd' or time_unit == 'days' or time_unit == 'day':
                 duration *= 60*60*24
             if mutedRole not in member.roles:
                 await member.add_roles(mutedRole)
