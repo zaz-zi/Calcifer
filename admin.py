@@ -14,21 +14,20 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
             mutedRole = interaction.guild.get_role(1081677484002648104)
             units = {"s": "seconds", "m": "minutes", "h": "hours", "d": "days"}
             durationDisplayed = duration
-            if time_unit == 'm':
+            if time_unit == 'm' or time_unit == 'minutes':
                 duration *= 60
-            elif time_unit == 'h':
+            elif time_unit == 'h' or time_unit == 'hours':
                 duration *= 60*60
-            elif time_unit == 'd':
+            elif time_unit == 'd' or time_unit == 'days':
                 duration *= 60*60*24
             if mutedRole not in member.roles:
                 await member.add_roles(mutedRole)
-                await interaction.response.send_message('The member has been muted', ephemeral=True, delete_after=20)
+                await interaction.response.send_message('The member has been muted')
                 await member.send(f'You have been muted\nDuration: **{durationDisplayed} {units[time_unit]}**\nReason: **{reason}**')
                 with io.open('mutes.txt', 'r+', encoding='utf-8') as file:
                     now = datetime.datetime.utcnow()
                     unmuteTime = datetime.timedelta(seconds=duration) + now
-                    file.write(str(member.id) + '[]' +
-                            str(unmuteTime.strftime('%y-%m-%d %H:%M:%S') + ''))
+                    file.write(str(member.id) + '[]' + str(unmuteTime.strftime('%y-%m-%d %H:%M:%S') + ''))
                 await asyncio.sleep(duration)
                 await member.remove_roles(mutedRole)
                 await member.send('You have been unmuted')
