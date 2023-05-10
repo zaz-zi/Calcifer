@@ -19,7 +19,7 @@ from _calcinfo import bot_token, pyre_guild_id
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-client = commands.Bot(intents=intents, command_prefix=commands.when_mentioned_or('c_'))
+client = commands.AutoShardedBot(intents=intents, command_prefix=commands.when_mentioned_or('c_'), shards = 1)
 
 
 class PersistentViewBot(commands.Bot):
