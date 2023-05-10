@@ -46,8 +46,8 @@ async def unmute(interaction: discord.Interaction, member: discord.Member):
         try:
             mutedRole = interaction.guild.get_role(1081677484002648104)
             if mutedRole in member.roles:
-                member.remove_roles(mutedRole)
-                member.send('You have been unmuted')
+                await member.remove_roles(mutedRole)
+                await member.send('You have been unmuted')
                 await interaction.response.send_message('The member has been unmuted', ephemeral=True, delete_after=20)
             else:
                 await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
