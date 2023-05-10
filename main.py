@@ -19,13 +19,13 @@ from _calcinfo import bot_token, pyre_guild_id
 intents = discord.Intents.default()
 intents.message_content = True
 intents.members = True
-client = commands.AutoShardedBot(intents=intents, command_prefix=commands.when_mentioned_or('c_'), shards = 1)
+client = commands.Bot(intents=intents, command_prefix=commands.when_mentioned_or('c_'))
 
 
-class PersistentViewBot(commands.AutoShardedBot):
+class PersistentViewBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.all()
-        super().__init__(command_prefix=commands.when_mentioned_or('c_'), intents=intents, shards = 1)
+        super().__init__(command_prefix=commands.when_mentioned_or('c_'), intents=intents)
 
     async def setup_hook(self) -> None:
         self.add_view(roles.EnglishMenu())
