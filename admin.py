@@ -85,7 +85,7 @@ async def mute_check(interaction: discord.Interaction):
             channels = json.load(file)
             muteLog = interaction.guild.get_channel(channels['mute-log'])
             async for message in muteLog.history():
-                # try:
+                try:
                     id = int(message.content.split('[]')[0])
                     time = datetime.datetime.strptime(message.content.split('[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
                     now = datetime.datetime.utcnow()
@@ -97,8 +97,8 @@ async def mute_check(interaction: discord.Interaction):
                             await member.remove_roles(mutedRole)
                             await member.send('You have been unmuted')
                         await message.delete()
-                # except:
-                #     await message.delete()
+                except:
+                    await message.delete()
                 
 
 
