@@ -38,11 +38,54 @@ client = PersistentViewBot()
 
 @client.event
 async def on_ready():
+    guild = client.get_guild(pyre_guild_id)
     await client.tree.sync()
-    await client.tree.sync(guild=discord.Object(id=pyre_guild_id))
+    await client.tree.sync(guild=guild)
     await client.get_channel(1079113375918850059).send('Let\'s get a fire going!')
-    print('Bot online!')
+    
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        muteLog = guild.get_channel(channels['mute-log'])
+        async for message in muteLog.history():
+            try:
+                id = int(message.content.split('[]')[0])
+                time = datetime.datetime.strptime(message.content.split(
+                    '[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
+                now = datetime.datetime.utcnow()
+                passed = now > time
+                member = await guild.fetch_member(id)
+                mutedRole = guild.get_role(1081677484002648104)
+                if passed:
+                    if mutedRole in member.roles:
+                        await member.remove_roles(mutedRole)
+                        await member.send('You have been unmuted')
+                    await message.delete()
+            except:
+                await message.delete()
 
+
+@client.event
+async def on_resumed():
+    guild = client.get_guild(pyre_guild_id)
+    with io.open('channel_ids.json', encoding='utf-8') as file:
+        channels = json.load(file)
+        muteLog = guild.get_channel(channels['mute-log'])
+        async for message in muteLog.history():
+            try:
+                id = int(message.content.split('[]')[0])
+                time = datetime.datetime.strptime(message.content.split('[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
+                now = datetime.datetime.utcnow()
+                passed = now > time
+                member = await guild.fetch_member(id)
+                mutedRole = guild.get_role(1081677484002648104)
+                if passed:
+                    if mutedRole in member.roles:
+                        await member.remove_roles(mutedRole)
+                        await member.send('You have been unmuted')
+                    await message.delete()
+            except:
+                await message.delete()
+    
 
 @client.event
 async def on_voice_state_update(member, before, after):
