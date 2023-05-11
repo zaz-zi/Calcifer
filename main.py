@@ -60,6 +60,14 @@ async def on_ready():
                         await member.remove_roles(mutedRole)
                         await member.send('You have been unmuted')
                     await message.delete()
+                else:
+                    difference = time - now
+                    wait = int(difference.total_seconds())
+                    await asyncio.sleep(wait)
+                    if mutedRole in member.roles:
+                        await member.remove_roles(mutedRole)
+                        await member.send('You have been unmuted')
+                    await message.delete()
             except:
                 await message.delete()
 
@@ -79,6 +87,14 @@ async def on_resumed():
                 member = await guild.fetch_member(id)
                 mutedRole = guild.get_role(1081677484002648104)
                 if passed:
+                    if mutedRole in member.roles:
+                        await member.remove_roles(mutedRole)
+                        await member.send('You have been unmuted')
+                    await message.delete()
+                else:
+                    difference = time - now
+                    wait = int(difference.total_seconds())
+                    await asyncio.sleep(wait)
                     if mutedRole in member.roles:
                         await member.remove_roles(mutedRole)
                         await member.send('You have been unmuted')
