@@ -53,7 +53,7 @@ async def unmute(interaction: discord.Interaction, member: discord.Member):
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
     else:
-        try:
+        # try:
             mutedRole = interaction.guild.get_role(1081677484002648104)
             if mutedRole in member.roles:
                 with io.open('channel_ids.json', encoding='utf-8') as file:
@@ -68,8 +68,8 @@ async def unmute(interaction: discord.Interaction, member: discord.Member):
                 await interaction.response.send_message('The member has been unmuted')
             else:
                 await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
-        except:
-            await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
+        # except:
+        #     await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
 
 
 async def mute_check(interaction: discord.Interaction):
