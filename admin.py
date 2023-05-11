@@ -58,8 +58,9 @@ async def unmute(interaction: discord.Interaction, member: discord.Member):
             if mutedRole in member.roles:
                 with io.open('channel_ids.json', encoding='utf-8') as file:
                     channels = json.load(file)
-                    muteLog = interaction.guild.get_channel(channels['mute-log'])   
-                    for message in muteLog.history():
+                    muteLog = interaction.guild.get_channel(channels['mute-log'])
+                    interaction.channel.send(type(muteLog))
+                    for message in muteLog.history(limit=500):
                         id = int(message.content.split('[]')[0])
                         if id == member.id:
                             await message.delete()
