@@ -24,10 +24,15 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
                 await member.add_roles(mutedRole)
                 await interaction.response.send_message('The member has been muted')
                 await member.send(f'You have been muted\nDuration: **{durationDisplayed} {units[time_unit]}**\nReason: **{reason}**')
-                with io.open('mutes.txt', 'r+', encoding='utf-8') as file:
+                
+                with io.open('channel_ids.json', encoding='utf-8') as file:
+                    channels = json.load(file)
+                    modLog = interaction.guild.get_channel(channels['mod-log'])
                     now = datetime.datetime.utcnow()
                     unmuteTime = datetime.timedelta(seconds=duration) + now
-                    file.write(str(member.id) + '[]' + str(unmuteTime.strftime('%y-%m-%d %H:%M:%S') + ''))
+                    log = str(member.id) + '[]' + str(unmuteTime.strftime('%y-%m-%d %H:%M:%S') + '')
+                    await modLog.send(content=log, delete_after=duration)
+
                 await asyncio.sleep(duration)
                 await member.remove_roles(mutedRole)
                 await member.send('You have been unmuted')
