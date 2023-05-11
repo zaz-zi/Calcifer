@@ -16,15 +16,14 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
             durationDisplayed = duration
             if time_unit == 'm' or time_unit == 'minutes' or time_unit == 'minute':
                 duration *= 60
+                time_unit = 'm'
             elif time_unit == 'h' or time_unit == 'hours' or time_unit == 'hour':
                 duration *= 60*60
+                time_unit = 'h'
             elif time_unit == 'd' or time_unit == 'days' or time_unit == 'day':
                 duration *= 60*60*24
+                time_unit = 'd'
             if mutedRole not in member.roles:
-                await member.add_roles(mutedRole)
-                await interaction.response.send_message('The member has been muted')
-                await member.send(f'You have been muted\nDuration: **{durationDisplayed} {units[time_unit]}**\nReason: **{reason}**')
-                
                 with io.open('channel_ids.json', encoding='utf-8') as file:
                     channels = json.load(file)
                     modLog = interaction.guild.get_channel(channels['mod-log'])
@@ -32,6 +31,14 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
                     unmuteTime = datetime.timedelta(seconds=duration) + now
                     log = str(member.id) + '[]' + str(unmuteTime.strftime('%y-%m-%d %H:%M:%S') + '')
                     await modLog.send(content=log, delete_after=duration)
+
+                await member.add_roles(mutedRole)
+                await interaction.response.send_message('The member has been muted')
+                await member.send(f'You have been muted\nDuration: **{durationDisplayed} {units[time_unit]}**\nReason: **{reason}**')
+
+                await member.add_roles(mutedRole)
+                await interaction.response.send_message('The member has been muted')
+                await member.send(f'You have been muted\nDuration: **{durationDisplayed} {units[time_unit]}**\nReason: **{reason}**')
 
                 await asyncio.sleep(duration)
                 await member.remove_roles(mutedRole)
