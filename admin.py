@@ -53,23 +53,26 @@ async def unmute(interaction: discord.Interaction, member: discord.Member):
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
     else:
-        # try:
+        try:
             mutedRole = interaction.guild.get_role(1081677484002648104)
             if mutedRole in member.roles:
                 with io.open('channel_ids.json', encoding='utf-8') as file:
                     channels = json.load(file)
                     muteLog = interaction.guild.get_channel(channels['mute-log'])
                     async for message in muteLog.history():
-                        id = int(message.content.split('[]')[0])
-                        if id == member.id:
+                        try:
+                            id = int(message.content.split('[]')[0])
+                            if id == member.id:
+                                await message.delete()
+                        except:
                             await message.delete()
                 await member.remove_roles(mutedRole)
                 await member.send('You have been unmuted')
                 await interaction.response.send_message('The member has been unmuted')
             else:
                 await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
-        # except:
-        #     await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
+        except:
+            await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
 
 
 async def mute_check(interaction: discord.Interaction):
@@ -78,41 +81,25 @@ async def mute_check(interaction: discord.Interaction):
         await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
     else:
         await interaction.response.send_message('Please stand by', ephemeral=True, delete_after=20)
-        with io.open('mutes.txt', 'r+', encoding='utf-8') as file:
-            inputData = file.readlines()
-            for item in inputData:
-                id = int(item.split('[]')[0])
-                time = datetime.datetime.strptime(item.split(
-                    '[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
-                now = datetime.datetime.utcnow()
-                passed = now > time
-                member = await interaction.guild.fetch_member(id)
-                mutedRole = interaction.guild.get_role(1081677484002648104)
-                if passed:
-                    if mutedRole in member.roles:
-                        await member.remove_roles(mutedRole)
-                        await member.send('You have been unmuted')
-                    with open("mutes.txt", "r+") as f:
-                        new_f = f.readlines()
-                        f.seek(0)
-                        for line in new_f:
-                            if item not in line:
-                                f.write(line)
-                        f.truncate()
-                else:
-                    difference = time - now
-                    wait = int(difference.total_seconds())
-                    await asyncio.sleep(wait)
-                    if mutedRole in member.roles:
-                        await member.remove_roles(mutedRole)
-                        await member.send('You have been unmuted')
-                    with open("mutes.txt", "r+") as f:
-                        new_f = f.readlines()
-                        f.seek(0)
-                        for line in new_f:
-                            if item not in line:
-                                f.write(line)
-                        f.truncate()
+        with io.open('channel_ids.json', encoding='utf-8') as file:
+            channels = json.load(file)
+            muteLog = interaction.guild.get_channel(channels['mute-log'])
+            async for message in muteLog.history():
+                try:
+                    id = int(message.split('[]')[0])
+                    time = datetime.datetime.strptime(message.split('[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
+                    now = datetime.datetime.utcnow()
+                    passed = now > time
+                    member = await interaction.guild.fetch_member(id)
+                    mutedRole = interaction.guild.get_role(1081677484002648104)
+                    if passed:
+                        if mutedRole in member.roles:
+                            await member.remove_roles(mutedRole)
+                            await member.send('You have been unmuted')
+                        await message.delete()
+                except:
+                    await message.delete()
+                
 
 
 async def ban(interaction: discord.Interaction, member: discord.Member, reason: str = 'blank'):
