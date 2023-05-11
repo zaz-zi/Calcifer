@@ -87,7 +87,7 @@ async def mute_check(interaction: discord.Interaction):
             async for message in muteLog.history():
                 # try:
                     id = int(message.content.split('[]')[0])
-                    time = datetime.datetime.strptime(message.split('[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
+                    time = datetime.datetime.strptime(message.content.split('[]')[1].replace('\n', ''), '%y-%m-%d %H:%M:%S')
                     now = datetime.datetime.utcnow()
                     passed = now > time
                     member = await interaction.guild.fetch_member(id)
