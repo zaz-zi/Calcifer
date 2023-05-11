@@ -26,11 +26,11 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
             if mutedRole not in member.roles:
                 with io.open('channel_ids.json', encoding='utf-8') as file:
                     channels = json.load(file)
-                    modLog = interaction.guild.get_channel(channels['mod-log'])
+                    muteLog = interaction.guild.get_channel(channels['mute-log'])
                     now = datetime.datetime.utcnow()
                     unmuteTime = datetime.timedelta(seconds=duration) + now
                     log = str(member.id) + '[]' + str(unmuteTime.strftime('%y-%m-%d %H:%M:%S') + '')
-                    await modLog.send(content=log, delete_after=duration)
+                    await muteLog.send(content=log, delete_after=duration)
 
                 await member.add_roles(mutedRole)
                 await interaction.response.send_message('The member has been muted')
