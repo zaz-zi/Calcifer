@@ -10,7 +10,7 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
     else:
-        try:
+        # try:
             mutedRole = interaction.guild.get_role(1081677484002648104)
             units = {"s": "seconds", "m": "minutes", "h": "hours", "d": "days"}
             durationDisplayed = duration
@@ -45,8 +45,8 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
                 await member.send('You have been unmuted')
             else:
                 await interaction.response.send_message('This member is already muted!', ephemeral=True, delete_after=20)
-        except:
-            await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
+        # except:
+        #     await interaction.response.send_message('Something went wrong. Please make sure you have provided the correct user ID.', ephemeral=True, delete_after=10)
 
 
 async def unmute(interaction: discord.Interaction, member: discord.Member):
