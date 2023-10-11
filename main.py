@@ -282,7 +282,7 @@ async def self(interaction: discord.Interaction):
     await roles.menuLangs(interaction)
 
 
-@client.tree.command(name='events', description='Post role selecting menus. Moderator only.', guild=discord.Object(id=pyre_guild_id))
+@client.tree.command(name='events', description='Post the Russian Events menu. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await clubs.readingMenu(interaction)
 
