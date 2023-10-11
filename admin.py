@@ -10,10 +10,10 @@ async def mute(interaction: discord.Interaction, member: discord.Member, duratio
     if role not in interaction.user.roles:
         await interaction.response.send_message('You do not have permission to use this command!', ephemeral=True, delete_after=20)
     else:
-        try:
+        try: 
             mutedRole = interaction.guild.get_role(1081677484002648104)
             units = {"s": "seconds", "m": "minutes", "h": "hours", "d": "days"}
-            durationDisplayed = duration
+            durationDisplayed = duration 
             if time_unit == 'seconds' or time_unit == 'second':
                 time_unit = 's'
             if time_unit == 'm' or time_unit == 'minutes' or time_unit == 'minute':

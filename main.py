@@ -12,6 +12,7 @@ import datetime
 import wiktionary
 import help
 import asyncio
+import clubs
 from resources import resources
 from proofreading import proofreading
 from _calcinfo import bot_token, pyre_guild_id
@@ -279,6 +280,11 @@ async def self(interaction: discord.Interaction, input: str):
 @client.tree.command(name='roles', description='Post role selecting menus. Moderator only.', guild=discord.Object(id=pyre_guild_id))
 async def self(interaction: discord.Interaction):
     await roles.menuLangs(interaction)
+
+
+@client.tree.command(name='events', description='Post role selecting menus. Moderator only.', guild=discord.Object(id=pyre_guild_id))
+async def self(interaction: discord.Interaction):
+    await clubs.readingMenu(interaction)
 
 
 @client.tree.command(name='mute', description='Mute a member. Moderator only.', guild=discord.Object(id=pyre_guild_id))
