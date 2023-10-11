@@ -6,7 +6,7 @@ class ReadingMenu(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label='Russian Events', style=discord.ButtonStyle.red, custom_id='he1')
+    @discord.ui.button(label='Interested', style=discord.ButtonStyle.red, custom_id='he1')
     async def selfReading(self, interaction: discord.Interaction, Button: discord.ui.Button):
         role = interaction.user.guild.get_role(1161749443087970354)
         if role in interaction.user.roles:
