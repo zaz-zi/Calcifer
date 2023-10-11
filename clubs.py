@@ -28,3 +28,4 @@ async def readingMenu(interaction: discord.Interaction):
             text = jsonRoles["description_reading_club"]
         embed = discord.Embed(type="rich", description=text, color=0xffa400)
         await interaction.channel.send(embed=embed, view=ReadingMenu())
+        await interaction.response.send_message(".", delete_after=20, ephemeral=True)
