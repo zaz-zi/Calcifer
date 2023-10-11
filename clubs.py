@@ -6,7 +6,7 @@ class ReadingMenu(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
 
-    @discord.ui.button(label='Reading Club', style=discord.ButtonStyle.red, custom_id='he1')
+    @discord.ui.button(label='Russian Events', style=discord.ButtonStyle.red, custom_id='he1')
     async def selfReading(self, interaction: discord.Interaction, Button: discord.ui.Button):
         role = interaction.user.guild.get_role(1161749443087970354)
         if role in interaction.user.roles:
@@ -26,6 +26,8 @@ async def readingMenu(interaction: discord.Interaction):
         with io.open('roles.json', encoding='utf-8') as file:
             jsonRoles = json.load(file)
             text = jsonRoles["description_reading_club"]
+        fileRu = discord.File('ru_circle_icon.png', filename="ru_circle_icon.png")
         embed = discord.Embed(type="rich", description=text, color=0xffa400)
-        await interaction.channel.send(embed=embed, view=ReadingMenu())
+        embed.set_author(name='Russian Events', icon_url='attachment://ru_circle_icon.png')
+        await interaction.channel.send(file=fileRu, embed=embed, view=ReadingMenu())
         await interaction.response.send_message(".", delete_after=20, ephemeral=True)
